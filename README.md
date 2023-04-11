@@ -1,9 +1,3 @@
-<div align="center">
-<img src="./static/icon.svg" alt="预览"/>
-
-<h1 align="center">ChatGPT Learn Web</h1>
-
-</div>
 
 ## 主要功能
 
