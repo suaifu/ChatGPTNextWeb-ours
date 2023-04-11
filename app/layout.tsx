@@ -2,12 +2,7 @@
 import "./styles/globals.scss";
 import "./styles/markdown.scss";
 import "./styles/highlight.scss";
-import {
-  getBuildConfig,
-  COMMIT_ID,
-  ACCESS_CODES,
-  IS_IN_DOCKER,
-} from "./config/build";
+import { getBuildConfig } from "./config/build";
 
 const buildConfig = getBuildConfig();
 
