@@ -2,7 +2,12 @@
 import "./styles/globals.scss";
 import "./styles/markdown.scss";
 import "./styles/highlight.scss";
-import { getBuildConfig } from "./config/build";
+import {
+  getBuildConfig,
+  COMMIT_ID,
+  ACCESS_CODES,
+  IS_IN_DOCKER,
+} from "./config/build";
 
 const buildConfig = getBuildConfig();
 
@@ -15,21 +20,6 @@ export const metadata = {
   },
   themeColor: "#fafafa",
 };
-
-function Meta() {
-  const metas = {
-    version: COMMIT_ID ?? "unknown",
-    access: ACCESS_CODES.size > 0 || IS_IN_DOCKER ? "enabled" : "disabled",
-  };
-
-  return (
-    <>
-      {Object.entries(metas).map(([k, v]) => (
-        <meta name={k} content={v} key={k} />
-      ))}
-    </>
-  );
-}
 
 export default function RootLayout({
   children,
