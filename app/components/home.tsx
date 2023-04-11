@@ -9,6 +9,7 @@ import styles from "./home.module.scss";
 
 import SettingsIcon from "../icons/settings.svg";
 import GithubIcon from "../icons/github.svg";
+import Shang from "../icons/shang.svg";
 import ChatGptIcon from "../icons/chatgpt.svg";
 
 import BotIcon from "../icons/bot.svg";
@@ -23,7 +24,7 @@ import { ChatList } from "./chat-list";
 import { Chat } from "./chat";
 
 import dynamic from "next/dynamic";
-import { REPO_URL } from "../constant";
+import { REPO_URL, REWARD_URL } from "../constant";
 import { ErrorBoundary } from "./error";
 
 export function Loading(props: { noLogo?: boolean }) {
@@ -103,9 +104,15 @@ function _Home() {
         className={styles.sidebar + ` ${showSideBar && styles["sidebar-show"]}`}
       >
         <div className={styles["sidebar-header"]}>
-          <div className={styles["sidebar-title"]}>ChatGPT Next</div>
+          <div className={styles["sidebar-title"]}>ChatGPT AI</div>
           <div className={styles["sidebar-sub-title"]}>
-            Build your own AI assistant.
+            <p>
+              愿人工智能AI助手可以帮到您
+              <br />
+              点击下方的猫🐱获取详细使用教程
+              <br />
+              如果觉得有帮到您，猛击猫旁的赏支持一下
+            </p>
           </div>
           <div className={styles["sidebar-logo"]}>
             <ChatGptIcon />
@@ -143,6 +150,11 @@ function _Home() {
                 }}
                 shadow
               />
+            </div>
+            <div className={styles["sidebar-action"]}>
+              <a href={REWARD_URL} target="_blank">
+                <IconButton icon={<Shang />} shadow />
+              </a>
             </div>
             <div className={styles["sidebar-action"]}>
               <a href={REPO_URL} target="_blank">
