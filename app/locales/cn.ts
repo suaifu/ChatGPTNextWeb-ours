@@ -3,7 +3,7 @@ import { SubmitKey } from "../store/app";
 const cn = {
   WIP: "该功能仍在开发中……",
   Error: {
-    Unauthorized: "现在是未授权状态，请点击左下角设置按钮输入访问密码。",
+    Unauthorized: "现在是未授权状态，请点击左下角设置按钮输入访问密码: ai 。",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} 条对话`,
@@ -147,7 +147,8 @@ const cn = {
   },
   Store: {
     DefaultTopic: "新的聊天",
-    BotHello: "有什么可以帮你的吗",
+    BotHello:
+      "你好呀，我会很多很多，你想不到的我也会，有什么想向我提问的吗？点击左下角的猫获提问思路，你会有意想不到的惊喜",
     Error: "出错了，稍后重试吧",
     Prompt: {
       History: (content: string) =>
