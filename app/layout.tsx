@@ -42,6 +42,12 @@ export default function RootLayout({
           rel="stylesheet"
         ></link>
         <script src="/serviceWorkerRegister.js" defer></script>
+        <script
+          async
+          defer
+          data-website-id="e9be284d-cc5d-49e3-ab89-b7fdfeb5b185"
+          src="https://umami.guoshuaifu.cn/umami.js"
+        ></script>
       </head>
       <body>{children}</body>
     </html>
