@@ -45,7 +45,7 @@ export default function RootLayout({
         <script
           async
           src="https://umami.guoshuaifu.cn/script.js"
-          data-website-id="e9be284d-cc5d-49e3-ab89-b7fdfeb5b185"
+          data-website-id="e28612d0-5e3c-463b-bec9-ea8d765673f8"
         ></script>
       </head>
       <body>{children}</body>
