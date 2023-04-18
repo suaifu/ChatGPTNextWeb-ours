@@ -44,9 +44,8 @@ export default function RootLayout({
         <script src="/serviceWorkerRegister.js" defer></script>
         <script
           async
-          defer
+          src="https://umami.guoshuaifu.cn/script.js"
           data-website-id="e9be284d-cc5d-49e3-ab89-b7fdfeb5b185"
-          src="https://umami.guoshuaifu.cn/umami.js"
         ></script>
       </head>
       <body>{children}</body>
