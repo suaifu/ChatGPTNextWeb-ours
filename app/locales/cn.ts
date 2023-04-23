@@ -149,7 +149,7 @@ const cn = {
   Store: {
     DefaultTopic: "新的聊天",
     BotHello:
-      "你好呀，我会很多很多，你想不到的我也会，有什么想向我提问的吗？点击左下角的猫获提问思路，你会有意想不到的惊喜",
+      "你好呀，我会很多很多，你想不到的我也会，有什么想向我提问的吗？点击左下角的猫获提问思路，你会有意想不到的惊喜，新上线的ChatGPT快捷指令(https://kjgpt.guoshuaifu.cn/) 欢迎使用",
     Error: "出错了，稍后重试吧",
     Prompt: {
       History: (content: string) =>
