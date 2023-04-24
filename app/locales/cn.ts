@@ -4,7 +4,7 @@ const cn = {
   WIP: "该功能仍在开发中……",
   Error: {
     Unauthorized:
-      "现在是未授权状态，请点击页面猫头🐱获取使用方式（http://usegpt.guoshuaifu.cn），新上线ChatGPT快捷指令（https://kjgpt.talkai.icu）欢迎使用，访问密码请添加微信即可获取：makerKwok ",
+      "现在是未授权状态，请点击页面猫头🐱获取使用方式 (http://usegpt.guoshuaifu.cn) ,新上线ChatGPT快捷指令（https://kjgpt.talkai.icu）欢迎使用，访问密码请添加微信即可获取：makerKwok ",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} 条对话`,
