@@ -1,4 +1,5 @@
 import { EmojiStyle } from "emoji-picker-react";
+import { useEffect, useState } from "react";
 import { showToast } from "./components/ui-lib";
 import Locale from "./locales";
 
@@ -47,7 +48,27 @@ export function isIOS() {
   return /iphone|ipad|ipod/.test(userAgent);
 }
 
+export function useMobileScreen() {
+  const [isMobileScreen_, setIsMobileScreen] = useState(isMobileScreen());
+  useEffect(() => {
+    const onResize = () => {
+      setIsMobileScreen(isMobileScreen());
+    };
+
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
+  return isMobileScreen_;
+}
+
 export function isMobileScreen() {
+  if (typeof window === "undefined") {
+    return false;
+  }
   return window.innerWidth <= 600;
 }
 
@@ -119,4 +140,8 @@ export function autoGrowTextArea(dom: HTMLTextAreaElement) {
   const rows = Math.round(height / singleLineHeight) + lineWrapCount;
 
   return rows;
+}
+
+export function getCSSVar(varName: string) {
+  return getComputedStyle(document.body).getPropertyValue(varName).trim();
 }

@@ -1,4 +1,4 @@
-import { SubmitKey } from "../store/app";
+import { SubmitKey } from "../store/config";
 
 const cn = {
   WIP: "该功能仍在开发中……",
@@ -18,6 +18,7 @@ const cn = {
       Copy: "复制",
       Stop: "停止",
       Retry: "重试",
+      Delete: "删除",
     },
     Rename: "重命名对话",
     Typing: "正在输入…",
@@ -38,12 +39,12 @@ const cn = {
     MessageFromChatGPT: "来自 ChatGPT 的消息",
   },
   Memory: {
-    Title: "历史记忆",
-    EmptyContent: "尚未记忆",
-    Send: "发送记忆",
-    Copy: "复制记忆",
+    Title: "历史摘要",
+    EmptyContent: "尚未总结",
+    Send: "启用总结并发送摘要",
+    Copy: "复制摘要",
     Reset: "重置对话",
-    ResetConfirm: "重置后将清空当前对话记录以及历史记忆，确认重置？",
+    ResetConfirm: "重置后将清空当前对话记录以及历史摘要，确认重置？",
   },
   Home: {
     NewChat: "新的聊天",
@@ -59,10 +60,10 @@ const cn = {
       ResetAll: "重置所有选项",
       Close: "关闭",
       ConfirmResetAll: {
-        Confirm: "Are you sure you want to reset all configurations?",
+        Confirm: "确认清除所有配置？",
       },
       ConfirmClearAll: {
-        Confirm: "Are you sure you want to reset all chat?",
+        Confirm: "确认清除所有聊天记录？",
       },
     },
     Lang: {
@@ -75,6 +76,7 @@ const cn = {
         it: "Italiano",
         tr: "Türkçe",
         jp: "日本語",
+        de: "Deutsch",
       },
     },
     Avatar: "头像",
@@ -104,6 +106,11 @@ const cn = {
       ListCount: (builtin: number, custom: number) =>
         `内置 ${builtin} 条，用户定义 ${custom} 条`,
       Edit: "编辑",
+      Modal: {
+        Title: "提示词列表",
+        Add: "增加一条",
+        Search: "搜索提示词",
+      },
     },
     HistoryCount: {
       Title: "附带历史消息数",

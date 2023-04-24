@@ -2,7 +2,7 @@
 
 require("../polyfill");
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, StyleHTMLAttributes } from "react";
 
 import { IconButton } from "./button";
 import styles from "./home.module.scss";
@@ -18,17 +18,27 @@ import LoadingIcon from "../icons/three-dots.svg";
 import CloseIcon from "../icons/close.svg";
 
 import { useChatStore } from "../store";
-import { isMobileScreen } from "../utils";
+import { isMobileScreen, getCSSVar, useMobileScreen } from "../utils";
 import Locale from "../locales";
 import { Chat } from "./chat";
 
 import dynamic from "next/dynamic";
 import { REPO_URL, REWARD_URL } from "../constant";
+import { Path } from "../constant";
 import { ErrorBoundary } from "./error";
+
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import { SideBar } from "./sidebar";
+import { useAppConfig } from "../store/config";
 
 export function Loading(props: { noLogo?: boolean }) {
   return (
-    <div className={styles["loading-content"]}>
+    <div className={styles["loading-content"] + " no-dark"}>
       {!props.noLogo && <BotIcon />}
       <LoadingIcon />
     </div>
@@ -39,12 +49,8 @@ const Settings = dynamic(async () => (await import("./settings")).Settings, {
   loading: () => <Loading noLogo />,
 });
 
-const ChatList = dynamic(async () => (await import("./chat-list")).ChatList, {
-  loading: () => <Loading noLogo />,
-});
-
-function useSwitchTheme() {
-  const config = useChatStore((state) => state.config);
+export function useSwitchTheme() {
+  const config = useAppConfig();
 
   useEffect(() => {
     document.body.classList.remove("light");
@@ -67,9 +73,7 @@ function useSwitchTheme() {
       metaDescriptionDark?.setAttribute("content", "#151515");
       metaDescriptionLight?.setAttribute("content", "#fafafa");
     } else {
-      const themeColor = getComputedStyle(document.body)
-        .getPropertyValue("--theme-color")
-        .trim();
+      const themeColor = getCSSVar("--themeColor");
       metaDescriptionDark?.setAttribute("content", themeColor);
       metaDescriptionLight?.setAttribute("content", themeColor);
     }
@@ -133,140 +137,58 @@ const useHasHydrated = () => {
   return hasHydrated;
 };
 
-function _Home() {
-  const [createNewSession, currentIndex, removeSession] = useChatStore(
-    (state) => [
-      state.newSession,
-      state.currentSessionIndex,
-      state.removeSession,
-    ],
-  );
-  const chatStore = useChatStore();
-  const loading = !useHasHydrated();
-  const [showSideBar, setShowSideBar] = useState(true);
-
-  // setting
-  const [openSettings, setOpenSettings] = useState(false);
-  const config = useChatStore((state) => state.config);
-
-  // drag side bar
-  const { onDragMouseDown } = useDragSideBar();
-
-  useSwitchTheme();
-
-  if (loading) {
-    return <Loading />;
-  }
+function WideScreen() {
+  const config = useAppConfig();
 
   return (
     <div
       className={`${
-        config.tightBorder && !isMobileScreen()
-          ? styles["tight-container"]
-          : styles.container
+        config.tightBorder ? styles["tight-container"] : styles.container
       }`}
     >
-      <div
-        className={styles.sidebar + ` ${showSideBar && styles["sidebar-show"]}`}
-      >
-        <div className={styles["sidebar-header"]}>
-          <div className={styles["sidebar-title"]}>ChatGPT AI</div>
-          <div className={styles["sidebar-sub-title"]}>
-            <p>
-              愿人工智能AI助手可以帮到您
-              <br />
-              点击下方的猫🐱获取详细使用教程
-              <br />
-              如果觉得有帮到您，猛击猫旁的赏支持一下
-            </p>
-          </div>
-          <div className={styles["sidebar-logo"]}>
-            <ChatGptIcon />
-          </div>
-        </div>
-
-        <div
-          className={styles["sidebar-body"]}
-          onClick={() => {
-            setOpenSettings(false);
-            setShowSideBar(false);
-          }}
-        >
-          <ChatList />
-        </div>
-
-        <div className={styles["sidebar-tail"]}>
-          <div className={styles["sidebar-actions"]}>
-            <div className={styles["sidebar-action"] + " " + styles.mobile}>
-              <IconButton
-                icon={<CloseIcon />}
-                onClick={chatStore.deleteSession}
-              />
-            </div>
-            <div className={styles["sidebar-action"]}>
-              <IconButton
-                icon={<SettingsIcon />}
-                onClick={() => {
-                  setOpenSettings(true);
-                  setShowSideBar(false);
-                }}
-                shadow
-              />
-            </div>
-            <div className={styles["sidebar-action"]}>
-              <a href={REWARD_URL} target="_blank">
-                <IconButton icon={<Shang />} shadow />
-              </a>
-            </div>
-            <div className={styles["sidebar-action"]}>
-              <a href={REPO_URL} target="_blank">
-                <IconButton icon={<GithubIcon />} shadow />
-              </a>
-            </div>
-          </div>
-          <div>
-            <IconButton
-              icon={<AddIcon />}
-              text={Locale.Home.NewChat}
-              onClick={() => {
-                createNewSession();
-                setShowSideBar(false);
-              }}
-              shadow
-            />
-          </div>
-        </div>
-
-        <div
-          className={styles["sidebar-drag"]}
-          onMouseDown={(e) => onDragMouseDown(e as any)}
-        ></div>
-      </div>
+      <SideBar />
 
       <div className={styles["window-content"]}>
-        {openSettings ? (
-          <Settings
-            closeSettings={() => {
-              setOpenSettings(false);
-              setShowSideBar(true);
-            }}
-          />
-        ) : (
-          <Chat
-            key="chat"
-            showSideBar={() => setShowSideBar(true)}
-            sideBarShowing={showSideBar}
-          />
-        )}
+        <Routes>
+          <Route path={Path.Home} element={<Chat />} />
+          <Route path={Path.Chat} element={<Chat />} />
+          <Route path={Path.Settings} element={<Settings />} />
+        </Routes>
+      </div>
+    </div>
+  );
+}
+
+function MobileScreen() {
+  const location = useLocation();
+  const isHome = location.pathname === Path.Home;
+
+  return (
+    <div className={styles.container}>
+      <SideBar className={isHome ? styles["sidebar-show"] : ""} />
+
+      <div className={styles["window-content"]}>
+        <Routes>
+          <Route path={Path.Home} element={null} />
+          <Route path={Path.Chat} element={<Chat />} />
+          <Route path={Path.Settings} element={<Settings />} />
+        </Routes>
       </div>
     </div>
   );
 }
 
 export function Home() {
+  const isMobileScreen = useMobileScreen();
+  useSwitchTheme();
+
+  if (!useHasHydrated()) {
+    return <Loading />;
+  }
+
   return (
     <ErrorBoundary>
-      <_Home></_Home>
+      <Router>{isMobileScreen ? <MobileScreen /> : <WideScreen />}</Router>
     </ErrorBoundary>
   );
 }
