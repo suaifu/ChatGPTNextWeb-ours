@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, HTMLProps, useRef } from "react";
+import { useState, useEffect, useMemo, HTMLProps } from "react";
 
 import EmojiPicker, { Theme as EmojiTheme } from "emoji-picker-react";
 
