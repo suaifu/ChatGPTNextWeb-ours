@@ -5,6 +5,7 @@ import styles from "./home.module.scss";
 import { IconButton } from "./button";
 import SettingsIcon from "../icons/settings.svg";
 import GithubIcon from "../icons/github.svg";
+import Shang from "../icons/shang.svg";
 import ChatGptIcon from "../icons/chatgpt.svg";
 import AddIcon from "../icons/add.svg";
 import CloseIcon from "../icons/close.svg";
@@ -18,6 +19,7 @@ import {
   NARROW_SIDEBAR_WIDTH,
   Path,
   REPO_URL,
+  REWARD_URL,
 } from "../constant";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -92,7 +94,13 @@ export function SideBar(props: { className?: string }) {
       <div className={styles["sidebar-header"]}>
         <div className={styles["sidebar-title"]}>ChatGPT Next</div>
         <div className={styles["sidebar-sub-title"]}>
-          Build your own AI assistant.
+          <p>
+            愿人工智能AI助手可以帮到您
+            <br />
+            点击下方的猫🐱获取详细使用教程
+            <br />
+            如果觉得有帮到您，猛击猫旁的赏支持一下
+          </p>
         </div>
         <div className={styles["sidebar-logo"]}>
           <ChatGptIcon />
@@ -126,6 +134,11 @@ export function SideBar(props: { className?: string }) {
           <div className={styles["sidebar-action"]}>
             <a href={REPO_URL} target="_blank">
               <IconButton icon={<GithubIcon />} shadow />
+            </a>
+          </div>
+          <div className={styles["sidebar-action"]}>
+            <a href={REWARD_URL} target="_blank">
+              <IconButton icon={<Shang />} shadow />
             </a>
           </div>
         </div>
