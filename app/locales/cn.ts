@@ -149,7 +149,7 @@ const cn = {
   Store: {
     DefaultTopic: "新的聊天",
     BotHello:
-      "你好呀，你知道的我可以会，你不知道的我也可以会，使用ChatGPT快捷指令(https://kjgpt.guoshuaifu.cn)来帮你快速使用，有什么想向我提问的吗？也可点击左下角的猫获提问思路，会有意想不到的惊喜！",
+      "你好呀，你知道的我可以会，你不知道的我也可以会，使用ChatGPT快捷指令 (https://kjgpt.guoshuaifu.cn) 来帮你快速使用，有什么想向我提问的吗？添加微信防丢失：makerKwok",
     Error: "出错了，稍后重试吧",
     Prompt: {
       History: (content: string) =>
