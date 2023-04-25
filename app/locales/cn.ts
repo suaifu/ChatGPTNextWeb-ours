@@ -47,7 +47,7 @@ const cn = {
     ResetConfirm: "重置后将清空当前对话记录以及历史摘要，确认重置？",
   },
   Home: {
-    NewChat: "新聊天",
+    NewChat: "新的聊天",
     DeleteChat: "确认删除选中的对话？",
     DeleteToast: "已删除会话",
     Revert: "撤销",
