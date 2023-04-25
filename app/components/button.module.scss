@@ -6,6 +6,8 @@
   justify-content: center;
   padding: 11px;
 
+  margin-right: 3px;
+
   cursor: pointer;
   transition: all 0.3s ease;
   overflow: hidden;
@@ -48,7 +50,7 @@
 
 .icon-button-text {
   margin-left: 5px;
-  font-size: 13px;
+  font-size: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
