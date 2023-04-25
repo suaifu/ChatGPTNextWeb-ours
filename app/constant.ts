@@ -4,7 +4,7 @@ export const REPO_URL = `https://www.guoshuaifu.cn/index.php/chatgpt-use.html`;
 export const REWARD_URL = `https://www.guoshuaifu.cn/index.php/shang.html`;
 // export const REWARD_URL = `alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=YES&amount=5&userId=2088802037530912&memo=打赏`;
 export const ISSUE_URL = `https://github.com/${OWNER}/${REPO}/issues`;
-export const UPDATE_URL = `${REPO_URL}#keep-updated`;
+export const UPDATE_URL = `https://github.com/${OWNER}/${REPO}#keep-updated`;
 export const FETCH_COMMIT_URL = `https://api.github.com/repos/${OWNER}/${REPO}/commits?per_page=1`;
 export const FETCH_TAG_URL = `https://api.github.com/repos/${OWNER}/${REPO}/tags?per_page=1`;
 export const RUNTIME_CONFIG_DOM = "danger-runtime-config";
