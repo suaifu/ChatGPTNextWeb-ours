@@ -92,14 +92,14 @@ export function SideBar(props: { className?: string }) {
       }`}
     >
       <div className={styles["sidebar-header"]}>
-        <div className={styles["sidebar-title"]}>ChatGPT AI</div>
+        <div className={styles["sidebar-title"]}>ChatGPT 小助手</div>
         <div className={styles["sidebar-sub-title"]}>
           <p>
-            访问密码请+QQ群：160798639
+            本站提供免费服务，也可单独购买key独享
             <br />
-            点击下方的猫🐱获取详细使用教程
+            访问密码请+vx:makerkwok
             <br />
-            如果觉得有帮到您，猛击猫旁的赏支持一下
+            如果觉得白漂很香，猛击-赏-支持一下
           </p>
         </div>
         <div className={styles["sidebar-logo"]}>
@@ -131,11 +131,11 @@ export function SideBar(props: { className?: string }) {
               <IconButton icon={<SettingsIcon />} shadow />
             </Link>
           </div>
-          <div className={styles["sidebar-action"]}>
-            <a href={REPO_URL} target="_blank">
-              <IconButton icon={<GithubIcon />} shadow />
-            </a>
-          </div>
+          {/*<div className={styles["sidebar-action"]}>*/}
+          {/*  <a href={REPO_URL} target="_blank">*/}
+          {/*    <IconButton icon={<GithubIcon />} shadow />*/}
+          {/*  </a>*/}
+          {/*</div>*/}
           <div className={styles["sidebar-action"]}>
             <a href={REWARD_URL} target="_blank">
               <IconButton icon={<Shang />} shadow />
