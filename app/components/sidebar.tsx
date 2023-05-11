@@ -97,7 +97,7 @@ export function SideBar(props: { className?: string }) {
           <p>
             本站提供免费服务，也可单独购买key独享
             <br />
-            访问密码请+vx:makerkwok
+            访问密码请+vx: makerkwok
             <br />
             如果觉得白漂很香，猛击-赏-支持一下
           </p>
