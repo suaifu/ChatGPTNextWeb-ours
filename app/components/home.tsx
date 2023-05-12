@@ -11,6 +11,8 @@ import SettingsIcon from "../icons/settings.svg";
 import GithubIcon from "../icons/github.svg";
 import Shang from "../icons/shang.svg";
 import ChatGptIcon from "../icons/chatgpt.svg";
+import BotIcon from "../icons/bot.svg";
+import LoadingIcon from "../icons/three-dots.svg";
 
 import { getCSSVar, useMobileScreen } from "../utils";
 
