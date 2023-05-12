@@ -128,7 +128,7 @@ export function SideBar(props: { className?: string }) {
             <br />
             访问密码请+vx: makerkwok
             <br />
-            如果觉得白漂很香，猛击-赏-支持一下
+            如果觉得应用很赞，猛击-赏-支持一下
           </p>
         </div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
