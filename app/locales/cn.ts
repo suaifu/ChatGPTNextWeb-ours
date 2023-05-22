@@ -4,7 +4,7 @@ const cn = {
   WIP: "该功能仍在开发中……",
   Error: {
     Unauthorized:
-      "访问密码不正确或为空，请前往[设置](/#/settings)页输入正确的访问密码，或者填入你自己的 OpenAI API Key，请点击链接学习使用方法 (https://usegpt.guoshuaifu.cn) ,ChatGPT快捷指令 (https://kjgpt.talkai.icu) 欢迎使用，访问密码请添加微信获取：makerkwok ",
+      "访问密码不正确或为空，请点击此处 [设置](/#/settings) 输入正确的访问密码，或者填入你自己的 OpenAI API Key，请点击链接学习使用方法 (https://usegpt.guoshuaifu.cn) ,ChatGPT快捷指令 (https://kjgpt.talkai.icu) 欢迎使用，访问密码请添加微信获取：makerkwok ",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} 条对话`,
