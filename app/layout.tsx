@@ -42,7 +42,7 @@ export default function RootLayout({
           rel="stylesheet"
         ></link>
         <script src="/serviceWorkerRegister.js" defer></script>
-        <scirpt src="/baidustatistics.js" defer></scirpt>
+        <script src="/baidustatistics.js" defer></script>
         <script
           async
           src="https://umami.guoshuaifu.cn/script.js"
