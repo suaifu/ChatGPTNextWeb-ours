@@ -34,8 +34,12 @@ export const getServerSideConfig = () => {
     );
   }
 
+  //从这至开始-Key池轮询
+  const apiKeys = (process.env.OPENAI_API_KEY ?? "").split(",");
+  const apiKey = apiKeys.at(Math.floor(Math.random() * apiKeys.length)) ?? "";
+
   return {
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey, //这里进行调用
     code: process.env.CODE,
     codes: ACCESS_CODES,
     needCode: ACCESS_CODES.size > 0,
