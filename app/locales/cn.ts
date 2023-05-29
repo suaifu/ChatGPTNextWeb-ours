@@ -3,8 +3,13 @@ import { SubmitKey } from "../store/config";
 const cn = {
   WIP: "该功能仍在开发中……",
   Error: {
-    Unauthorized:
-      "访问密码不正确或为空，请点击此处 [设置](/#/settings) 输入正确的访问密码，或者填入你自己的 OpenAI API Key，请点击链接学习使用方法 (https://usegpt.guoshuaifu.cn) ,ChatGPT快捷指令 (https://kjgpt.talkai.icu) 欢迎使用，获取访问密码请添加微信：makerkwok ",
+    Unauthorized: `前往微信号：**[makerkwok](/gptwx.jpg)** 免费获取密码，然后点击左下角[设置](/#/settings)按钮输入密码后解锁**免费使用**。
+         **提问：** 你可以在这里放一些常用问题吗？
+         **回答：** 当然可以，还可以在这里放一些问题解答，太棒啦！
+         常见问题与使用说明点击查看 **[使用方法](https://usegpt.guoshuaifu.cn)** 
+         提问技巧与套路点击查看 **[ChatGPT快捷指令](https://kjgpt.talkai.icu)**
+         卡顿或无响应？可能是用户量太大， [添加微信获得独立账号 KEY 使用](/gptwx.jpg)
+         欢迎来聊聊  [QQ群](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=YuWgTQrri80UNwaYa2GEkZ850c62__oH&authKey=zNaA7KWQjlW7pbJuDMc45l6i3Cgp6fXpgUcdkYEmItQlZBrHJhMPlS2TxAcmfcDX&noverify=0&group_code=160798639)`,
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} 条对话`,
