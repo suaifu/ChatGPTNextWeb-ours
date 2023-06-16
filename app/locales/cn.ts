@@ -3,15 +3,15 @@ import { SubmitKey } from "../store/config";
 const cn = {
   WIP: "该功能仍在开发中……",
   Error: {
-    Unauthorized:
-    `访问密码不正确或为空，请前往[登录](/#/auth)页输入正确的访问密码后解锁**免费使用**，添加微信号：**[makerkwok](/gptwx.jpg)** 免费获取密码，或者在[设置](/#/settings)页填入你自己的 OpenAI API Key。
+    Unauthorized: `访问密码不正确或为空，请前往[登录](/#/auth)页输入正确的访问密码后解锁**免费使用**
+    添加微信号：**[makerkwok](/gptwx.jpg)** 免费获取密码，或者在[设置](/#/settings)页填入你自己的 OpenAI API Key。
     **提问：** 你可以在这里放一些常用问题吗？
     **回答：** 当然可以，还可以在这里放一些问题解答，太棒啦！
     常见问题与使用说明点击查看 **[使用方法](https://www.guoshuaifu.cn/index.php/chatgpt-use.html)** 
     提问技巧与套路点击查看 **[ChatGPT快捷指令](https://kjgpt.talkai.icu)**
     卡顿或无响应？可能是用户量太大， [添加微信获得独立账号 KEY 使用](/gptwx.jpg)
-    欢迎来聊聊  [QQ群](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=YuWgTQrri80UNwaYa2GEkZ850c62__oH&authKey=zNaA7KWQjlW7pbJuDMc45l6i3Cgp6fXpgUcdkYEmItQlZBrHJhMPlS2TxAcmfcDX&noverify=0&group_code=160798639)`,
-},
+    欢迎来聊聊  [QQ群:160798639](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=YuWgTQrri80UNwaYa2GEkZ850c62__oH&authKey=zNaA7KWQjlW7pbJuDMc45l6i3Cgp6fXpgUcdkYEmItQlZBrHJhMPlS2TxAcmfcDX&noverify=0&group_code=160798639)`,
+  },
   Auth: {
     Title: "需要密码",
     Tips: "管理员开启了密码验证，请在下方填入访问码",
@@ -206,12 +206,12 @@ const cn = {
   },
   Store: {
     DefaultTopic: "新的聊天",
-    BotHello: ` **提问：** 我想让你做销售员。试着向我推销一些东西，但要让你试图推销的东西看起来比实际更有价值，并说服我购买它。现在我要假装你在打电话给我，问你打电话的目的是什么。你好，请问你打电话是为了什么？
+    BotHello: ` **提问：** 我想让你做销售员。试着向我推销一些东西，但要让你试图推销的东西看起来比实际更有价值，并说服我购买它。现在我要假装你在打电话给我，问你打电话的目的是什么。我的提问"你好，请问你打电话是为了什么？"
      **回答：** 当然可以，很高兴给您打电话。我今天想向您介绍我们公司的最新产......，太棒啦！
      常见问题与使用说明点击查看 **[使用方法](https://www.guoshuaifu.cn/index.php/chatgpt-use.html)** 
      提问技巧与套路点击查看 **[ChatGPT快捷指令](https://kjgpt.talkai.icu)**
      卡顿或无响应？可能是用户量太大， **[添加微信makerkwok获得独立账号 KEY 使用](/gptwx.jpg)**
-     欢迎来聊聊  [QQ群](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=YuWgTQrri80UNwaYa2GEkZ850c62__oH&authKey=zNaA7KWQjlW7pbJuDMc45l6i3Cgp6fXpgUcdkYEmItQlZBrHJhMPlS2TxAcmfcDX&noverify=0&group_code=160798639)`,
+     欢迎来聊聊  [QQ群:160798639](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=YuWgTQrri80UNwaYa2GEkZ850c62__oH&authKey=zNaA7KWQjlW7pbJuDMc45l6i3Cgp6fXpgUcdkYEmItQlZBrHJhMPlS2TxAcmfcDX&noverify=0&group_code=160798639)`,
     Error: "出错了，稍后重试吧",
     Prompt: {
       History: (content: string) => "这是历史聊天总结作为前情提要：" + content,
