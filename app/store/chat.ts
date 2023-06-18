@@ -12,6 +12,24 @@ import { api, RequestMessage } from "../client/api";
 import { ChatControllerPool } from "../client/controller";
 import { prettyObject } from "../utils/format";
 import { estimateTokenLength } from "../utils/token";
+//这里是信息检测的处理--------
+import {initializeApp} from 'firebase/app';
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp,
+} from 'firebase/firestore';
+import { getFirebaseConfig } from '../../public/firebase-config.js';
+
+// 将上一步复制的配置信息粘贴到这里
+const firebaseConfig = getFirebaseConfig();
+// 初始化 Firebase 应用
+initializeApp(firebaseConfig);
+
+const firestore = getFirestore();
+const messagesCollectionRef = collection(firestore, 'messages');
+//----------------------
 
 export type ChatMessage = RequestMessage & {
   date: string;
@@ -276,6 +294,39 @@ export const useChatStore = create<ChatStore>()(
         get().updateCurrentSession((session) => {
           session.messages = session.messages.concat([userMessage, botMessage]);
         });
+
+        //-----------
+        // 创建一个包含用户输入信息的对象
+        const userMessageData = {
+          role: 'user',
+          message: content,
+          timestamp: serverTimestamp()
+        };
+
+        // 将用户消息添加到 Firestore 的 messages 集合中
+        try {
+          const docRef = await addDoc(messagesCollectionRef, userMessageData);
+          console.log('用户消息已成功添加到 Firestore。');
+        } catch (error) {
+          console.error('添加用户消息到 Firestore 时出现错误：', error);
+        }
+
+
+        // // 创建一个包含机器人消息的对象
+        // const botMessageData = {
+        //   role: 'bot',
+        //   content: botResponse,
+        //   timestamp: new Date()
+        // };
+        //
+        // // 将机器人消息添加到 Firestore 的 messages 集合中
+        // try {
+        //   const docRef = await addDoc(messagesCollectionRef, botMessageData);
+        //   console.log('机器人消息已成功添加到 Firestore。');
+        // } catch (error) {
+        //   console.error('添加机器人消息到 Firestore 时出现错误：', error);
+        // }
+//------------------------------------
 
         // make request
         console.log("[User Input] ", sendMessages);
