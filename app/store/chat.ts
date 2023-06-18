@@ -12,7 +12,7 @@ import { api, RequestMessage } from "../client/api";
 import { ChatControllerPool } from "../client/controller";
 import { prettyObject } from "../utils/format";
 import { estimateTokenLength } from "../utils/token";
-//这里是信息检测的处理--------
+// 这里是信息检测的处理--------
 import { messagesCollectionRef } from "../api/firebase"
 import {
   addDoc,
@@ -283,36 +283,20 @@ export const useChatStore = create<ChatStore>()(
           session.messages = session.messages.concat([userMessage, botMessage]);
         });
 
-        //-----------
+//-----------
         // 创建一个包含用户输入信息的对象
-        const userMessageData = {
-          role: 'user',
-          message: content,
-          timestamp: serverTimestamp()
-        };
-
-        // 将用户消息添加到 Firestore 的 messages 集合中
-        try {
-          await addDoc(messagesCollectionRef, userMessageData);
-          console.log('用户消息已成功添加到 Firestore。');
-        } catch (error) {
-          console.error('添加用户消息到 Firestore 时出现错误：', error);
-        }
-
-
-        // // 创建一个包含机器人消息的对象
-        // const botMessageData = {
-        //   role: 'bot',
-        //   content: botResponse,
-        //   timestamp: new Date()
+        // const userMessageData = {
+        //   role: 'user',
+        //   message: content,
+        //   timestamp: serverTimestamp()
         // };
         //
-        // // 将机器人消息添加到 Firestore 的 messages 集合中
+        // // 将用户消息添加到 Firestore 的 messages 集合中
         // try {
-        //   const docRef = await addDoc(messagesCollectionRef, botMessageData);
-        //   console.log('机器人消息已成功添加到 Firestore。');
+        //   await addDoc(messagesCollectionRef, userMessageData);
+        //   console.log('用户消息已成功添加到 Firestore。');
         // } catch (error) {
-        //   console.error('添加机器人消息到 Firestore 时出现错误：', error);
+        //   console.error('添加用户消息到 Firestore 时出现错误：', error);
         // }
 //------------------------------------
 
