@@ -13,11 +13,11 @@ import { ChatControllerPool } from "../client/controller";
 import { prettyObject } from "../utils/format";
 import { estimateTokenLength } from "../utils/token";
 // 这里是信息检测的处理--------
-import { messagesCollectionRef } from "../api/firebase"
-import {
-  addDoc,
-  serverTimestamp,
-} from 'firebase/firestore';
+// import { messagesCollectionRef } from "../api/firebase"
+// import {
+//   addDoc,
+//   serverTimestamp,
+// } from 'firebase/firestore';
 
 export type ChatMessage = RequestMessage & {
   date: string;
@@ -283,7 +283,7 @@ export const useChatStore = create<ChatStore>()(
           session.messages = session.messages.concat([userMessage, botMessage]);
         });
 
-//-----------
+        //-----------
         // 创建一个包含用户输入信息的对象
         // const userMessageData = {
         //   role: 'user',
@@ -298,7 +298,7 @@ export const useChatStore = create<ChatStore>()(
         // } catch (error) {
         //   console.error('添加用户消息到 Firestore 时出现错误：', error);
         // }
-//------------------------------------
+        //------------------------------------
 
         // make request
         console.log("[User Input] ", sendMessages);
