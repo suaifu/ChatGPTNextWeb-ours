@@ -36,9 +36,9 @@ import {
 
 
 // 将上一步复制的配置信息粘贴到这里
-const firebaseConfig = getFirebaseConfig();
+const firebase = getFirebaseConfig();
 // 初始化 Firebase 应用
-initializeApp(firebaseConfig);
+initializeApp(firebase);
 
 const firestore = getFirestore();
 export const messagesCollectionRef = collection(firestore, 'messages');

@@ -13,7 +13,7 @@ import { ChatControllerPool } from "../client/controller";
 import { prettyObject } from "../utils/format";
 import { estimateTokenLength } from "../utils/token";
 //这里是信息检测的处理--------
-import { messagesCollectionRef } from "../../public/firebase-config"
+import { messagesCollectionRef } from "../api/firebase"
 import {
   addDoc,
   serverTimestamp,
