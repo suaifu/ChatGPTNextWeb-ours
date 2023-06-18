@@ -13,23 +13,11 @@ import { ChatControllerPool } from "../client/controller";
 import { prettyObject } from "../utils/format";
 import { estimateTokenLength } from "../utils/token";
 //这里是信息检测的处理--------
-import {initializeApp} from 'firebase/app';
+import { messagesCollectionRef } from "../../public/firebase-config"
 import {
-  getFirestore,
-  collection,
   addDoc,
   serverTimestamp,
 } from 'firebase/firestore';
-import { getFirebaseConfig } from '../../public/firebase-config.js';
-
-// 将上一步复制的配置信息粘贴到这里
-const firebaseConfig = getFirebaseConfig();
-// 初始化 Firebase 应用
-initializeApp(firebaseConfig);
-
-const firestore = getFirestore();
-const messagesCollectionRef = collection(firestore, 'messages');
-//----------------------
 
 export type ChatMessage = RequestMessage & {
   date: string;
