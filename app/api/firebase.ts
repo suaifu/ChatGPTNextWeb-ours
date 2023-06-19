@@ -26,22 +26,14 @@ export function getFirebaseConfig() {
   }
 }
 
-import {initializeApp} from 'firebase/app';
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  serverTimestamp,
-} from 'firebase/firestore';
-
 
 // 将上一步复制的配置信息粘贴到这里
-const firebase = getFirebaseConfig();
-// 初始化 Firebase 应用
-initializeApp(firebase);
+export const firebase = getFirebaseConfig();
+// // 初始化 Firebase 应用
+// initializeApp(firebase);
 
-const firestore = getFirestore();
-export const messagesCollectionRef = collection(firestore, 'messages');
+// const firestore = getFirestore();
+// export const messagesCollectionRef = collection(firestore, 'messages');
 
 //包含聊天信息的对象
 // addDoc(collection(getFirestore(), 'messages'), {
