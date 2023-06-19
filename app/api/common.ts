@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import {initializeApp} from "firebase/app";
 import {firebase} from "@/app/api/firebase";
+import {getFirestore} from "firebase/firestore";
 
 export const OPENAI_URL = "api.openai.com";
 const DEFAULT_PROTOCOL = "https";
@@ -9,7 +10,8 @@ const BASE_URL = process.env.BASE_URL ?? OPENAI_URL;
 const DISABLE_GPT4 = !!process.env.DISABLE_GPT4;
 
 // // 初始化 Firebase 应用
-export const firebaseApp = initializeApp(firebase);
+const firebaseApp = initializeApp(firebase);
+export const firestore = getFirestore(firebaseApp);
 
 export async function requestOpenai(req: NextRequest) {
   const controller = new AbortController();

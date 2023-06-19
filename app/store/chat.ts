@@ -13,13 +13,11 @@ import { ChatControllerPool } from "../client/controller";
 import { prettyObject } from "../utils/format";
 import { estimateTokenLength } from "../utils/token";
 // 这里是信息检测的处理--------
-// import { requestOpenai } from "../api/common";
-// import {
-//   addDoc, collection,
-//   serverTimestamp,
-// } from 'firebase/firestore';
-// import firebase from "firebase/compat";
-// import firestore = firebase.firestore;
+import {
+  addDoc, collection,
+  serverTimestamp,
+} from 'firebase/firestore';
+import {firestore} from "@/app/api/common";
 
 export type ChatMessage = RequestMessage & {
   date: string;
@@ -287,19 +285,20 @@ export const useChatStore = create<ChatStore>()(
 
         //-----------
         //创建一个包含用户输入信息的对象
-        // const userMessageData = {
-        //   role: 'user',
-        //   message: content,
-        //   timestamp: serverTimestamp()
-        // };
-        //
-        // // 将用户消息添加到 Firestore 的 messages 集合中
-        // try {
-        //   await addDoc(requestOpenai.messagesCollectionRef, userMessageData);
-        //   console.log('用户消息已成功添加到 Firestore。');
-        // } catch (error) {
-        //   console.error('添加用户消息到 Firestore 时出现错误：', error);
-        // }
+        const userMessageData = {
+          role: 'user',
+          message: content,
+          timestamp: serverTimestamp()
+        };
+        const messagesCollectionRef = collection(firestore, 'messages');
+
+        // 将用户消息添加到 Firestore 的 messages 集合中
+        try {
+          await addDoc(messagesCollectionRef, userMessageData);
+          console.log('用户消息已成功添加到 Firestore。');
+        } catch (error) {
+          console.error('添加用户消息到 Firestore 时出现错误：', error);
+        }
         //------------------------------------
 
         // make request
