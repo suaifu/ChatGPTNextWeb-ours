@@ -1,3 +1,5 @@
+import {initializeApp} from "firebase/app";
+
 /**
  * To find your Firebase config object:
  *
@@ -31,3 +33,5 @@ export function getFirebaseConfig() {
 
 // 将上一步复制的配置信息粘贴到这里
 export const firebase = getFirebaseConfig();
+// // 初始化 Firebase 应用
+export const firebaseApp = initializeApp(firebase);

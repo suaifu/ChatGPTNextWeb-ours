@@ -6,16 +6,16 @@ import {
     getFirestore,
     serverTimestamp,
 } from "firebase/firestore";
-import {firebase} from "@/app/api/firebase";
+import {firebase, firebaseApp} from "@/app/api/firebase";
 
-// // 初始化 Firebase 应用
-initializeApp(firebase);
+// 初始化 Firebase 应用
+// export firebaseApp = initializeApp(firebase);
 
 // const firestore = getFirestore();
 // export const messagesCollectionRef = collection(firestore, 'messages');
 
 //包含聊天信息的对象
-addDoc(collection(getFirestore(), "messages"), {
+addDoc(collection(getFirestore(firebaseApp), "messages"), {
     sender: "John",
     message: "Hello, world!",
     timestamp: serverTimestamp(),
