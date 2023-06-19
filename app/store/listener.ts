@@ -6,7 +6,7 @@ import {
     getFirestore,
     serverTimestamp,
 } from "firebase/firestore";
-import {firebase, firebaseApp} from "@/app/api/firebase";
+import {firebaseApp} from "@/app/api/common";
 
 // 初始化 Firebase 应用
 // export firebaseApp = initializeApp(firebase);
