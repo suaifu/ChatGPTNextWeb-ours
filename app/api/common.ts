@@ -1,12 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { initializeApp } from "firebase/app";
-import { firebase } from "@/app/api/firebase";
-import {
-  addDoc,
-  collection,
-  getFirestore,
-  serverTimestamp,
-} from "firebase/firestore";
 
 export const OPENAI_URL = "api.openai.com";
 const DEFAULT_PROTOCOL = "https";
@@ -21,18 +13,6 @@ export async function requestOpenai(req: NextRequest) {
     "/api/openai/",
     "",
   );
-
-  // 初始化 Firebase 应用
-  const firebaseApp = initializeApp(firebase);
-  // const firestore = getFirestore(firebaseApp);
-  // const messagesCollectionRef = collection(firestore, 'messages');
-
-  //包含聊天信息的对象
-  addDoc(collection(getFirestore(firebaseApp), "messages"), {
-    sender: "John",
-    message: "Hello, world!",
-    timestamp: serverTimestamp(),
-  });
 
   let baseUrl = BASE_URL;
 
