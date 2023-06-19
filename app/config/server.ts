@@ -58,11 +58,11 @@ export const getServerSideConfig = () => {
 
 // 初始化 Firebase 应用
 const firebaseApp = initializeApp(firebase);
-// const firestore = getFirestore(firebaseApp);
+const firestore = getFirestore(firebaseApp);
 // const messagesCollectionRef = collection(firestore, 'messages');
 
 //包含聊天信息的对象
-addDoc(collection(getFirestore(firebaseApp), "messages"), {
+addDoc(collection(firestore, "messages"), {
   sender: "John",
   message: "Hello, world!",
   timestamp: serverTimestamp(),
