@@ -17,7 +17,7 @@ import {
   addDoc, collection,
   serverTimestamp,
 } from 'firebase/firestore';
-import {firestore} from "@/app/api/common";
+import {messagesCollectionRef} from "@/app/store/listener";
 
 export type ChatMessage = RequestMessage & {
   date: string;
@@ -290,7 +290,6 @@ export const useChatStore = create<ChatStore>()(
           message: content,
           timestamp: serverTimestamp()
         };
-        const messagesCollectionRef = collection(firestore, 'messages');
 
         // 将用户消息添加到 Firestore 的 messages 集合中
         try {
