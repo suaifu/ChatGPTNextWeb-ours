@@ -1,15 +1,11 @@
-import {
-    collection, getFirestore,
-} from "firebase/firestore";
-import {firebase} from "@/app/api/firebase";
-import {initializeApp} from "@firebase/app";
-import {createMessage} from "@/app/store/chat";
-
+import { collection, getFirestore } from "firebase/firestore";
+import { firebase } from "@/app/api/firebase";
+import { initializeApp } from "@firebase/app";
 
 // 初始化 Firebase 应用
 const firebaseApp = initializeApp(firebase);
 const firestore = getFirestore(firebaseApp);
-export const messagesCollectionRef = collection(firestore, 'messages');
+export const messagesCollectionRef = collection(firestore, "messages");
 
 //包含聊天信息的对象
 // addDoc(collection(getFirestore(firebaseApp), "messages"), {
@@ -17,8 +13,6 @@ export const messagesCollectionRef = collection(firestore, 'messages');
 //     message: "Hello, world!",
 //     timestamp: serverTimestamp(),
 // });
-
-
 
 //----------------
 // const fs = require('fs');
