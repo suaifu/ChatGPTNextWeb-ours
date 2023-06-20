@@ -288,16 +288,17 @@ export const useChatStore = create<ChatStore>()(
         const userMessageData = {
           role: 'user',
           message: content,
-          timestamp: serverTimestamp()
+          timestamp: serverTimestamp(),
         };
 
         // 将用户消息添加到 Firestore 的 messages 集合中
         try {
-          await addDoc(messagesCollectionRef, userMessageData);
+          addDoc(messagesCollectionRef, userMessageData);
           console.log('用户消息已成功添加到 Firestore。');
         } catch (error) {
           console.error('添加用户消息到 Firestore 时出现错误：', error);
         }
+
         //------------------------------------
 
         // make request

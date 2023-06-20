@@ -61,5 +61,6 @@ export function auth(req: NextRequest) {
 
   return {
     error: false,
+    userIP: getIP(req),//返回用户的IP地址
   };
 }

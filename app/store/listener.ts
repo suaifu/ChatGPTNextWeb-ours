@@ -1,9 +1,13 @@
 import {
-    collection,
+    collection, getFirestore,
 } from "firebase/firestore";
-import {firestore} from "@/app/api/common";
+import {firebase} from "@/app/api/firebase";
+import {initializeApp} from "@firebase/app";
 
 
+// 初始化 Firebase 应用
+const firebaseApp = initializeApp(firebase);
+const firestore = getFirestore(firebaseApp);
 export const messagesCollectionRef = collection(firestore, 'messages');
 
 //包含聊天信息的对象
