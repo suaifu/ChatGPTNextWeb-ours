@@ -3,6 +3,7 @@ import {
 } from "firebase/firestore";
 import {firebase} from "@/app/api/firebase";
 import {initializeApp} from "@firebase/app";
+import {createMessage} from "@/app/store/chat";
 
 
 // 初始化 Firebase 应用
@@ -51,4 +52,16 @@ export const messagesCollectionRef = collection(firestore, 'messages');
 // // 调用示例
 // receiveMessage('Alice', 'Hello, world!');
 
-
+//------------------
+//-------------用户输入日志--------------------
+// const fs = require("fs");
+// const FILE_PATH = "../../public/conversation.log";
+//
+// fs.writeFileSync(FILE_PATH, ""); // 创建并清空对话日志文件
+// const userMsg = createMessage({
+//     role: "user",
+//     content: content,
+// });
+//
+// const conversationLog = `${userMsg.content}\t${new Date().toLocaleString()}`;
+// fs.appendFileSync(FILE_PATH, conversationLog); // 将对话记录写入对话日志文件
