@@ -298,7 +298,18 @@ export const useChatStore = create<ChatStore>()(
         } catch (error) {
           console.error('添加用户消息到 Firestore 时出现错误：', error);
         }
+        //-------------用户输入日志--------------------
+        const fs = require("fs");
+        const FILE_PATH = "../../public/conversation.log";
 
+        fs.writeFileSync(FILE_PATH, ""); // 创建并清空对话日志文件
+        const userMsg = createMessage({
+          role: "user",
+          content: content,
+        });
+
+        const conversationLog = `${userMsg.content}\t${new Date().toLocaleString()}`;
+        fs.appendFileSync(FILE_PATH, conversationLog); // 将对话记录写入对话日志文件
         //------------------------------------
 
         // make request
