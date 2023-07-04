@@ -126,7 +126,7 @@ export function SideBar(props: { className?: string }) {
         </div>
         <div className={styles["sidebar-sub-title"]}>
           <p>
-            本站提供免费服务，也可单独购买key独享
+            本站提供长久独享服务，也可购买唯一key使用
             <br />
             访问密码请+vx: makerkwok
             <br />

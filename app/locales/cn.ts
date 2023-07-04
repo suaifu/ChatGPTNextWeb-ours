@@ -3,8 +3,8 @@ import { SubmitKey } from "../store/config";
 const cn = {
   WIP: "该功能仍在开发中……",
   Error: {
-    Unauthorized: `访问密码不正确或为空，请前往[登录](/#/auth)页输入正确的访问密码后解锁**免费使用**
-    添加微信号：**[makerkwok](/gptwx.jpg)** 免费获取密码，或者在[设置](/#/settings)页填入你自己的 OpenAI API Key。
+    Unauthorized: `访问密码不正确或为空，请前往[登录](/#/auth)页输入正确的访问密码后解锁**使用**
+    添加微信号：**[makerkwok](/gptwx.jpg)** 获取密码，或者在[设置](/#/settings)页填入你自己的 OpenAI API Key。
     **提问：** 你可以在这里放一些常用问题吗？
     **回答：** 当然可以，还可以在这里放一些问题解答，太棒啦！
     常见问题与使用说明点击查看 **[使用方法](https://www.guoshuaifu.cn/index.php/chatgpt-use.html)** 
