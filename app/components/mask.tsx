@@ -1,5 +1,5 @@
-import { IconButton } from "./button";
-import { ErrorBoundary } from "./error";
+import {IconButton} from "./button";
+import {ErrorBoundary} from "./error";
 
 import styles from "./mask.module.scss";
 
@@ -12,27 +12,27 @@ import DeleteIcon from "../icons/delete.svg";
 import EyeIcon from "../icons/eye.svg";
 import CopyIcon from "../icons/copy.svg";
 
-import { DEFAULT_MASK_AVATAR, Mask, useMaskStore } from "../store/mask";
-import { ChatMessage, ModelConfig, useAppConfig, useChatStore } from "../store";
-import { ROLES } from "../client/api";
-import { Input, List, ListItem, Modal, Popover, Select } from "./ui-lib";
-import { Avatar, AvatarPicker } from "./emoji";
-import Locale, { AllLangs, ALL_LANG_OPTIONS, Lang } from "../locales";
-import { useNavigate } from "react-router-dom";
+import {DEFAULT_MASK_AVATAR, Mask, useMaskStore} from "../store/mask";
+import {ChatMessage, ModelConfig, useAppConfig, useChatStore} from "../store";
+import {ROLES} from "../client/api";
+import {Input, List, ListItem, Modal, Popover, Select, showConfirm,} from "./ui-lib";
+import {Avatar, AvatarPicker} from "./emoji";
+import Locale, {ALL_LANG_OPTIONS, AllLangs, Lang} from "../locales";
+import {useNavigate} from "react-router-dom";
 
 import chatStyle from "./chat.module.scss";
-import { useEffect, useState } from "react";
-import { downloadAs, readFromFile } from "../utils";
-import { Updater } from "../typing";
-import { ModelConfigList } from "./model-config";
-import { FileName, Path } from "../constant";
-import { BUILTIN_MASK_STORE } from "../masks";
+import {useState} from "react";
+import {downloadAs, readFromFile} from "../utils";
+import {Updater} from "../typing";
+import {ModelConfigList} from "./model-config";
+import {FileName, Path} from "../constant";
+import {BUILTIN_MASK_STORE} from "../masks";
 
 export function MaskAvatar(props: { mask: Mask }) {
   return props.mask.avatar !== DEFAULT_MASK_AVATAR ? (
-    <Avatar avatar={props.mask.avatar} />
+      <Avatar avatar={props.mask.avatar}/>
   ) : (
-    <Avatar model={props.mask.modelConfig.model} />
+      <Avatar model={props.mask.modelConfig.model}/>
   );
 }
 
@@ -118,26 +118,31 @@ export function MaskConfig(props: {
           ></input>
         </ListItem>
         {props.shouldSyncFromGlobal ? (
-          <ListItem
-            title={Locale.Mask.Config.Sync.Title}
-            subTitle={Locale.Mask.Config.Sync.SubTitle}
-          >
-            <input
-              type="checkbox"
-              checked={props.mask.syncGlobalConfig}
-              onChange={(e) => {
-                if (
-                  e.currentTarget.checked &&
-                  confirm(Locale.Mask.Config.Sync.Confirm)
-                ) {
-                  props.updateMask((mask) => {
-                    mask.syncGlobalConfig = e.currentTarget.checked;
-                    mask.modelConfig = { ...globalConfig.modelConfig };
-                  });
-                }
-              }}
-            ></input>
-          </ListItem>
+            <ListItem
+                title={Locale.Mask.Config.Sync.Title}
+                subTitle={Locale.Mask.Config.Sync.SubTitle}
+            >
+              <input
+                  type="checkbox"
+                  checked={props.mask.syncGlobalConfig}
+                  onChange={async (e) => {
+                    const checked = e.currentTarget.checked;
+                    if (
+                        checked &&
+                        (await showConfirm(Locale.Mask.Config.Sync.Confirm))
+                    ) {
+                      props.updateMask((mask) => {
+                        mask.syncGlobalConfig = checked;
+                        mask.modelConfig = {...globalConfig.modelConfig};
+                      });
+                    } else if (!checked) {
+                      props.updateMask((mask) => {
+                        mask.syncGlobalConfig = checked;
+                      });
+                    }
+                  }}
+              ></input>
+            </ListItem>
         ) : null}
       </List>
 
@@ -436,15 +441,15 @@ export function MaskPage() {
                     />
                   )}
                   {!m.builtin && (
-                    <IconButton
-                      icon={<DeleteIcon />}
-                      text={Locale.Mask.Item.Delete}
-                      onClick={() => {
-                        if (confirm(Locale.Mask.Item.DeleteConfirm)) {
-                          maskStore.delete(m.id);
-                        }
-                      }}
-                    />
+                      <IconButton
+                          icon={<DeleteIcon/>}
+                          text={Locale.Mask.Item.Delete}
+                          onClick={async () => {
+                            if (await showConfirm(Locale.Mask.Item.DeleteConfirm)) {
+                              maskStore.delete(m.id);
+                            }
+                          }}
+                      />
                   )}
                 </div>
               </div>

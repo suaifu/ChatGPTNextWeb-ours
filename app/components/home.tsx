@@ -2,42 +2,33 @@
 
 require("../polyfill");
 
-import { useState, useEffect } from "react";
-
-import { IconButton } from "./button";
+import {useEffect, useState} from "react";
 import styles from "./home.module.scss";
-
-import SettingsIcon from "../icons/settings.svg";
-import GithubIcon from "../icons/github.svg";
-import Shang from "../icons/shang.svg";
-import ChatGptIcon from "../icons/chatgpt.svg";
 import BotIcon from "../icons/bot.svg";
 import LoadingIcon from "../icons/three-dots.svg";
 
-import { getCSSVar, useMobileScreen } from "../utils";
+import {getCSSVar, useMobileScreen} from "../utils";
 
 import dynamic from "next/dynamic";
-import { Path, SlotID } from "../constant";
-import { ErrorBoundary } from "./error";
+import {Path, SlotID} from "../constant";
+import {ErrorBoundary} from "./error";
 
-import {
-  HashRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
-import { SideBar } from "./sidebar";
-import { useAppConfig } from "../store/config";
-import { AuthPage } from "./auth";
-import { getClientConfig } from "../config/client";
+import {getLang} from "../locales";
+
+import {HashRouter as Router, Route, Routes, useLocation,} from "react-router-dom";
+import {SideBar} from "./sidebar";
+import {useAppConfig} from "../store/config";
+import {AuthPage} from "./auth";
+import {getClientConfig} from "../config/client";
+import {api} from "../client/api";
 
 export function Loading(props: { noLogo?: boolean }) {
-  return (
-    <div className={styles["loading-content"] + " no-dark"}>
-      {!props.noLogo && <BotIcon />}
-      <LoadingIcon />
-    </div>
-  );
+    return (
+        <div className={styles["loading-content"] + " no-dark"}>
+            {!props.noLogo && <BotIcon/>}
+            <LoadingIcon/>
+        </div>
+    );
 }
 
 const Settings = dynamic(async () => (await import("./settings")).Settings, {
@@ -124,12 +115,12 @@ function Screen() {
   return (
     <div
       className={
-        styles.container +
-        ` ${
-          config.tightBorder && !isMobileScreen
-            ? styles["tight-container"]
-            : styles.container
-        }`
+          styles.container +
+          ` ${
+              config.tightBorder && !isMobileScreen
+                  ? styles["tight-container"]
+                  : styles.container
+          } ${getLang() === "ar" ? styles["rtl-screen"] : ""}`
       }
     >
       {isAuth ? (
@@ -137,40 +128,53 @@ function Screen() {
           <AuthPage />
         </>
       ) : (
-        <>
-          <SideBar className={isHome ? styles["sidebar-show"] : ""} />
+          <>
+              <SideBar className={isHome ? styles["sidebar-show"] : ""}/>
 
-          <div className={styles["window-content"]} id={SlotID.AppBody}>
-            <Routes>
-              <Route path={Path.Home} element={<Chat />} />
-              <Route path={Path.NewChat} element={<NewChat />} />
-              <Route path={Path.Masks} element={<MaskPage />} />
-              <Route path={Path.Chat} element={<Chat />} />
-              <Route path={Path.Settings} element={<Settings />} />
-            </Routes>
-          </div>
-        </>
+              <div className={styles["window-content"]} id={SlotID.AppBody}>
+                  <Routes>
+                      <Route path={Path.Home} element={<Chat/>}/>
+                      <Route path={Path.NewChat} element={<NewChat/>}/>
+                      <Route path={Path.Masks} element={<MaskPage/>}/>
+                      <Route path={Path.Chat} element={<Chat/>}/>
+                      <Route path={Path.Settings} element={<Settings/>}/>
+                  </Routes>
+              </div>
+          </>
       )}
     </div>
   );
 }
 
+export function useLoadData() {
+    const config = useAppConfig();
+
+    useEffect(() => {
+        (async () => {
+            const models = await api.llm.models();
+            config.mergeModels(models);
+        })();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+}
+
 export function Home() {
-  useSwitchTheme();
+    useSwitchTheme();
+    useLoadData();
 
-  useEffect(() => {
-    console.log("[Config] got config from build time", getClientConfig());
-  }, []);
+    useEffect(() => {
+        console.log("[Config] got config from build time", getClientConfig());
+    }, []);
 
-  if (!useHasHydrated()) {
-    return <Loading />;
-  }
+    if (!useHasHydrated()) {
+        return <Loading/>;
+    }
 
-  return (
-    <ErrorBoundary>
-      <Router>
-        <Screen />
-      </Router>
-    </ErrorBoundary>
-  );
+    return (
+        <ErrorBoundary>
+            <Router>
+                <Screen/>
+            </Router>
+        </ErrorBoundary>
+    );
 }

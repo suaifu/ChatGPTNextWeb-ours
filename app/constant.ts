@@ -5,6 +5,7 @@ export const REWARD_URL = `https://www.guoshuaifu.cn/index.php/shang.html`;
 // export const REWARD_URL = `alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=YES&amount=5&userId=2088802037530912&memo=打赏`;
 export const ISSUE_URL = `https://github.com/${OWNER}/${REPO}/issues`;
 export const UPDATE_URL = `https://github.com/${OWNER}/${REPO}#keep-updated`;
+export const RELEASE_URL = `https://github.com/${OWNER}/${REPO}/releases`;
 export const FETCH_COMMIT_URL = `https://api.github.com/repos/${OWNER}/${REPO}/commits?per_page=1`;
 export const FETCH_TAG_URL = `https://api.github.com/repos/${OWNER}/${REPO}/tags?per_page=1`;
 export const RUNTIME_CONFIG_DOM = "danger-runtime-config";
@@ -29,12 +30,13 @@ export enum FileName {
 }
 
 export enum StoreKey {
-  Chat = "chat-next-web-store",
-  Access = "access-control",
-  Config = "app-config",
-  Mask = "mask-store",
-  Prompt = "prompt-store",
-  Update = "chat-update",
+    Chat = "chat-next-web-store",
+    Access = "access-control",
+    Config = "app-config",
+    Mask = "mask-store",
+    Prompt = "prompt-store",
+    Update = "chat-update",
+    Sync = "sync",
 }
 
 export const MAX_SIDEBAR_WIDTH = 500;
@@ -50,7 +52,82 @@ export const REQUEST_TIMEOUT_MS = 60000;
 export const EXPORT_MESSAGE_CLASS_NAME = "export-markdown";
 
 export const OpenaiPath = {
-  ChatPath: "v1/chat/completions",
-  UsagePath: "dashboard/billing/usage",
-  SubsPath: "dashboard/billing/subscription",
+    ChatPath: "v1/chat/completions",
+    UsagePath: "dashboard/billing/usage",
+    SubsPath: "dashboard/billing/subscription",
+    ListModelPath: "v1/models",
 };
+
+export const DEFAULT_INPUT_TEMPLATE = `{{input}}`; // input / time / model / lang
+export const DEFAULT_SYSTEM_TEMPLATE = `
+You are ChatGPT, a large language model trained by OpenAI.
+Knowledge cutoff: 2021-09
+Current model: {{model}}
+Current time: {{time}}`;
+
+export const DEFAULT_MODELS = [
+    {
+        name: "gpt-4",
+        available: false,
+    },
+    {
+        name: "gpt-4-0314",
+        available: false,
+    },
+    {
+        name: "gpt-4-0613",
+        available: false,
+    },
+    {
+        name: "gpt-4-32k",
+        available: false,
+    },
+    {
+        name: "gpt-4-32k-0314",
+        available: false,
+    },
+    {
+        name: "gpt-4-32k-0613",
+        available: false,
+    },
+    {
+        name: "gpt-3.5-turbo",
+        available: true,
+    },
+    {
+        name: "gpt-3.5-turbo-0301",
+        available: true,
+    },
+    {
+        name: "gpt-3.5-turbo-0613",
+        available: true,
+    },
+    {
+        name: "gpt-3.5-turbo-16k",
+        available: true,
+    },
+    {
+        name: "gpt-3.5-turbo-16k-0613",
+        available: true,
+    },
+    {
+        name: "qwen-v1", // 通义千问
+        available: false,
+    },
+    {
+        name: "ernie", // 文心一言
+        available: false,
+    },
+    {
+        name: "spark", // 讯飞星火
+        available: false,
+    },
+    {
+        name: "llama", // llama
+        available: false,
+    },
+    {
+        name: "chatglm", // chatglm-6b
+        available: false,
+    },
+] as const;

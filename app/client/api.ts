@@ -1,7 +1,7 @@
-import { getClientConfig } from "../config/client";
-import { ACCESS_CODE_PREFIX } from "../constant";
-import { ChatMessage, ModelType, useAccessStore } from "../store";
-import { ChatGPTApi } from "./platforms/openai";
+import {getClientConfig} from "../config/client";
+import {ACCESS_CODE_PREFIX} from "../constant";
+import {ChatMessage, ModelType, useAccessStore} from "../store";
+import {ChatGPTApi} from "./platforms/openai";
 
 export const ROLES = ["system", "user", "assistant"] as const;
 export type MessageRole = (typeof ROLES)[number];
@@ -38,9 +38,17 @@ export interface LLMUsage {
   total: number;
 }
 
+export interface LLMModel {
+  name: string;
+  available: boolean;
+}
+
 export abstract class LLMApi {
   abstract chat(options: ChatOptions): Promise<void>;
+
   abstract usage(): Promise<LLMUsage>;
+
+  abstract models(): Promise<LLMModel[]>;
 }
 
 type ProviderName = "openai" | "azure" | "claude" | "palm";

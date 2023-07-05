@@ -4,28 +4,32 @@ import CloseIcon from "../icons/close.svg";
 import EyeIcon from "../icons/eye.svg";
 import EyeOffIcon from "../icons/eye-off.svg";
 import DownIcon from "../icons/down.svg";
+import ConfirmIcon from "../icons/confirm.svg";
+import CancelIcon from "../icons/cancel.svg";
 
-import { createRoot } from "react-dom/client";
-import React, { HTMLProps, useEffect, useState } from "react";
-import { IconButton } from "./button";
+import Locale from "../locales";
+
+import {createRoot} from "react-dom/client";
+import React, {HTMLProps, useEffect, useState} from "react";
+import {IconButton} from "./button";
 
 export function Popover(props: {
-  children: JSX.Element;
-  content: JSX.Element;
-  open?: boolean;
-  onClose?: () => void;
+    children: JSX.Element;
+    content: JSX.Element;
+    open?: boolean;
+    onClose?: () => void;
 }) {
-  return (
-    <div className={styles.popover}>
-      {props.children}
-      {props.open && (
-        <div className={styles["popover-content"]}>
-          <div className={styles["popover-mask"]} onClick={props.onClose}></div>
-          {props.content}
+    return (
+        <div className={styles.popover}>
+            {props.children}
+            {props.open && (
+                <div className={styles["popover-content"]}>
+                    <div className={styles["popover-mask"]} onClick={props.onClose}></div>
+                    {props.content}
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 }
 
 export function Card(props: { children: JSX.Element[]; className?: string }) {
@@ -86,10 +90,10 @@ export function Loading() {
 }
 
 interface ModalProps {
-  title: string;
-  children?: JSX.Element | JSX.Element[];
-  actions?: JSX.Element[];
-  onClose?: () => void;
+    title: string;
+    children?: any;
+    actions?: JSX.Element[];
+    onClose?: () => void;
 }
 export function Modal(props: ModalProps) {
   useEffect(() => {
@@ -252,13 +256,141 @@ export function Select(
     HTMLSelectElement
   >,
 ) {
-  const { className, children, ...otherProps } = props;
-  return (
-    <div className={`${styles["select-with-icon"]} ${className}`}>
-      <select className={styles["select-with-icon-select"]} {...otherProps}>
-        {children}
-      </select>
-      <DownIcon className={styles["select-with-icon-icon"]} />
-    </div>
-  );
+    const {className, children, ...otherProps} = props;
+    return (
+        <div className={`${styles["select-with-icon"]} ${className}`}>
+            <select className={styles["select-with-icon-select"]} {...otherProps}>
+                {children}
+            </select>
+            <DownIcon className={styles["select-with-icon-icon"]}/>
+        </div>
+    );
+}
+
+export function showConfirm(content: any) {
+    const div = document.createElement("div");
+    div.className = "modal-mask";
+    document.body.appendChild(div);
+
+    const root = createRoot(div);
+    const closeModal = () => {
+        root.unmount();
+        div.remove();
+    };
+
+    return new Promise<boolean>((resolve) => {
+        root.render(
+            <Modal
+                title={Locale.UI.Confirm}
+                actions={[
+                    <IconButton
+                        key="cancel"
+                        text={Locale.UI.Cancel}
+                        onClick={() => {
+                            resolve(false);
+                            closeModal();
+                        }}
+                        icon={<CancelIcon/>}
+                        tabIndex={0}
+                        bordered
+                        shadow
+                    ></IconButton>,
+                    <IconButton
+                        key="confirm"
+                        text={Locale.UI.Confirm}
+                        type="primary"
+                        onClick={() => {
+                            resolve(true);
+                            closeModal();
+                        }}
+                        icon={<ConfirmIcon/>}
+                        tabIndex={0}
+                        autoFocus
+                        bordered
+                        shadow
+                    ></IconButton>,
+                ]}
+                onClose={closeModal}
+            >
+                {content}
+            </Modal>,
+        );
+    });
+}
+
+function PromptInput(props: {
+    value: string;
+    onChange: (value: string) => void;
+    rows?: number;
+}) {
+    const [input, setInput] = useState(props.value);
+    const onInput = (value: string) => {
+        props.onChange(value);
+        setInput(value);
+    };
+
+    return (
+        <textarea
+            className={styles["modal-input"]}
+            autoFocus
+            value={input}
+            onInput={(e) => onInput(e.currentTarget.value)}
+            rows={props.rows ?? 3}
+        ></textarea>
+    );
+}
+
+export function showPrompt(content: any, value = "", rows = 3) {
+    const div = document.createElement("div");
+    div.className = "modal-mask";
+    document.body.appendChild(div);
+
+    const root = createRoot(div);
+    const closeModal = () => {
+        root.unmount();
+        div.remove();
+    };
+
+    return new Promise<string>((resolve) => {
+        let userInput = "";
+
+        root.render(
+            <Modal
+                title={content}
+                actions={[
+                    <IconButton
+                        key="cancel"
+                        text={Locale.UI.Cancel}
+                        onClick={() => {
+                            closeModal();
+                        }}
+                        icon={<CancelIcon/>}
+                        bordered
+                        shadow
+                        tabIndex={0}
+                    ></IconButton>,
+                    <IconButton
+                        key="confirm"
+                        text={Locale.UI.Confirm}
+                        type="primary"
+                        onClick={() => {
+                            resolve(userInput);
+                            closeModal();
+                        }}
+                        icon={<ConfirmIcon/>}
+                        bordered
+                        shadow
+                        tabIndex={0}
+                    ></IconButton>,
+                ]}
+                onClose={closeModal}
+            >
+                <PromptInput
+                    onChange={(val) => (userInput = val)}
+                    value={value}
+                    rows={rows}
+                ></PromptInput>
+            </Modal>,
+        );
+    });
 }

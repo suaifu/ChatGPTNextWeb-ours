@@ -4,8 +4,14 @@ declare module "*.woff2";
 declare module "*.woff";
 declare module "*.ttf";
 declare module "*.scss" {
-  const content: Record<string, string>;
-  export default content;
+    const content: Record<string, string>;
+    export default content;
 }
 
 declare module "*.svg";
+
+declare interface Window {
+    __TAURI__?: {
+        writeText(text: string): Promise<void>;
+    };
+}

@@ -1,11 +1,11 @@
-import { SubmitKey } from "../store/config";
-import type { LocaleType } from "./index";
+import {SubmitKey} from "../store/config";
+import type {PartialLocaleType} from "./index";
 
-const ru: LocaleType = {
+const ru: PartialLocaleType = {
   WIP: "Скоро...",
   Error: {
     Unauthorized:
-      "Несанкционированный доступ. Пожалуйста, введите код доступа на странице настроек.",
+        "Несанкционированный доступ. Пожалуйста, введите код доступа на странице настроек.",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} сообщений`,
@@ -61,13 +61,7 @@ const ru: LocaleType = {
   Settings: {
     Title: "Настройки",
     SubTitle: "Все настройки",
-    Actions: {
-      ClearAll: "Очистить все данные",
-      ResetAll: "Сбросить все настройки",
-      Close: "Закрыть",
-      ConfirmResetAll: "Вы уверены, что хотите сбросить все настройки?",
-      ConfirmClearAll: "Вы уверены, что хотите очистить все данные?",
-    },
+
     Lang: {
       Name: "Language", // ATTENTION: if you wanna add a new translation, please do not translate this value, leave it as `Language`
       All: "Все языки",
@@ -155,7 +149,12 @@ const ru: LocaleType = {
     PresencePenalty: {
       Title: "Штраф за повторения",
       SubTitle:
-        "Чем выше значение, тем больше вероятность общения на новые темы",
+          "Чем выше значение, тем больше вероятность общения на новые темы",
+    },
+    FrequencyPenalty: {
+      Title: "Штраф за частоту",
+      SubTitle:
+          "Большее значение снижает вероятность повторения одной и той же строки",
     },
   },
   Store: {
@@ -222,7 +221,7 @@ const ru: LocaleType = {
     More: "Найти еще",
     NotShow: "Не показывать снова",
     ConfirmNoShow:
-      "Подтвердите отключение? Вы можете включить это позже в настройках.",
+        "Подтвердите отключение? Вы можете включить это позже в настройках.",
   },
 
   UI: {
@@ -231,6 +230,12 @@ const ru: LocaleType = {
     Close: "Закрыть",
     Create: "Создать",
     Edit: "Редактировать",
+  },
+  Exporter: {
+    Model: "Модель",
+    Messages: "Сообщения",
+    Topic: "Тема",
+    Time: "Время",
   },
 };
 

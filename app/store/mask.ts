@@ -1,21 +1,21 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
-import { BUILTIN_MASKS } from "../masks";
-import { getLang, Lang } from "../locales";
-import { DEFAULT_TOPIC, ChatMessage } from "./chat";
-import { ModelConfig, ModelType, useAppConfig } from "./config";
-import { StoreKey } from "../constant";
+import {create} from "zustand";
+import {persist} from "zustand/middleware";
+import {BUILTIN_MASKS} from "../masks";
+import {getLang, Lang} from "../locales";
+import {ChatMessage, DEFAULT_TOPIC} from "./chat";
+import {ModelConfig, useAppConfig} from "./config";
+import {StoreKey} from "../constant";
 
 export type Mask = {
-  id: number;
-  avatar: string;
-  name: string;
-  hideContext?: boolean;
-  context: ChatMessage[];
-  syncGlobalConfig?: boolean;
-  modelConfig: ModelConfig;
-  lang: Lang;
-  builtin: boolean;
+    id: number;
+    avatar: string;
+    name: string;
+    hideContext?: boolean;
+    context: ChatMessage[];
+    syncGlobalConfig?: boolean;
+    modelConfig: ModelConfig;
+    lang: Lang;
+    builtin: boolean;
 };
 
 export const DEFAULT_MASK_STATE = {
@@ -86,10 +86,21 @@ export const useMaskStore = create<MaskStore>()(
         return get().masks[id ?? 1145141919810];
       },
       getAll() {
-        const userMasks = Object.values(get().masks).sort(
-          (a, b) => b.id - a.id,
-        );
-        return userMasks.concat(BUILTIN_MASKS);
+          const userMasks = Object.values(get().masks).sort(
+              (a, b) => b.id - a.id,
+          );
+          const config = useAppConfig.getState();
+          const buildinMasks = BUILTIN_MASKS.map(
+              (m) =>
+                  ({
+                      ...m,
+                      modelConfig: {
+                          ...config.modelConfig,
+                          ...m.modelConfig,
+                      },
+                  } as Mask),
+          );
+          return userMasks.concat(buildinMasks);
       },
       search(text) {
         return Object.values(get().masks);

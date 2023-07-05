@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import {NextRequest, NextResponse} from "next/server";
 
 export const OPENAI_URL = "api.openai.com";
 const DEFAULT_PROTOCOL = "https";
@@ -33,17 +33,19 @@ export async function requestOpenai(req: NextRequest) {
 
   const fetchUrl = `${baseUrl}/${openaiPath}`;
   const fetchOptions: RequestInit = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: authValue,
-      ...(process.env.OPENAI_ORG_ID && {
-        "OpenAI-Organization": process.env.OPENAI_ORG_ID,
-      }),
-    },
-    cache: "no-store",
-    method: req.method,
-    body: req.body,
-    signal: controller.signal,
+      headers: {
+          "Content-Type": "application/json",
+          Authorization: authValue,
+          ...(process.env.OPENAI_ORG_ID && {
+              "OpenAI-Organization": process.env.OPENAI_ORG_ID,
+          }),
+      },
+      cache: "no-store",
+      method: req.method,
+      body: req.body,
+      // @ts-ignore
+      duplex: "half",
+      signal: controller.signal,
   };
 
   // #1815 try to refuse gpt4 request

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { showToast } from "./components/ui-lib";
+import {useEffect, useState} from "react";
+import {showToast} from "./components/ui-lib";
 import Locale from "./locales";
 
 export function trimTopic(topic: string) {
@@ -8,7 +8,12 @@ export function trimTopic(topic: string) {
 
 export async function copyToClipboard(text: string) {
   try {
-    await navigator.clipboard.writeText(text);
+    if (window.__TAURI__) {
+      window.__TAURI__.writeText(text);
+    } else {
+      await navigator.clipboard.writeText(text);
+    }
+
     showToast(Locale.Copy.Success);
   } catch (error) {
     const textArea = document.createElement("textarea");
@@ -152,14 +157,15 @@ export function autoGrowTextArea(dom: HTMLTextAreaElement) {
   const width = getDomContentWidth(dom);
   measureDom.style.width = width + "px";
   measureDom.innerText = dom.value !== "" ? dom.value : "1";
+  measureDom.style.fontSize = dom.style.fontSize;
   const endWithEmptyLine = dom.value.endsWith("\n");
   const height = parseFloat(window.getComputedStyle(measureDom).height);
   const singleLineHeight = parseFloat(
-    window.getComputedStyle(singleLineDom).height,
+      window.getComputedStyle(singleLineDom).height,
   );
 
   const rows =
-    Math.round(height / singleLineHeight) + (endWithEmptyLine ? 1 : 0);
+      Math.round(height / singleLineHeight) + (endWithEmptyLine ? 1 : 0);
 
   return rows;
 }

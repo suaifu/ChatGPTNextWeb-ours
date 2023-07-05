@@ -1,28 +1,28 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import {create} from "zustand";
+import {persist} from "zustand/middleware";
 import Fuse from "fuse.js";
-import { getLang } from "../locales";
-import { StoreKey } from "../constant";
+import {getLang} from "../locales";
+import {StoreKey} from "../constant";
 
 export interface Prompt {
-  id?: number;
-  isUser?: boolean;
-  title: string;
-  content: string;
+    id?: number;
+    isUser?: boolean;
+    title: string;
+    content: string;
 }
 
 export interface PromptStore {
-  counter: number;
-  latestId: number;
-  prompts: Record<number, Prompt>;
+    counter: number;
+    latestId: number;
+    prompts: Record<number, Prompt>;
 
-  add: (prompt: Prompt) => number;
-  get: (id: number) => Prompt | undefined;
-  remove: (id: number) => void;
-  search: (text: string) => Prompt[];
-  update: (id: number, updater: (prompt: Prompt) => void) => void;
+    add: (prompt: Prompt) => number;
+    get: (id: number) => Prompt | undefined;
+    remove: (id: number) => void;
+    search: (text: string) => Prompt[];
+    update: (id: number, updater: (prompt: Prompt) => void) => void;
 
-  getUserPrompts: () => Prompt[];
+    getUserPrompts: () => Prompt[];
 }
 
 export const SearchService = {
@@ -127,7 +127,7 @@ export const usePromptStore = create<PromptStore>()(
       search(text) {
         if (text.length === 0) {
           // return all rompts
-          return SearchService.allPrompts.concat([...get().getUserPrompts()]);
+            return get().getUserPrompts().concat(SearchService.builtinPrompts);
         }
         return SearchService.search(text) as Prompt[];
       },

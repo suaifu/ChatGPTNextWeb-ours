@@ -1,19 +1,20 @@
-import { useEffect, useRef, useState } from "react";
-import { Path, SlotID } from "../constant";
-import { IconButton } from "./button";
-import { EmojiAvatar } from "./emoji";
+import {useEffect, useRef, useState} from "react";
+import {Path, SlotID} from "../constant";
+import {IconButton} from "./button";
+import {EmojiAvatar} from "./emoji";
 import styles from "./new-chat.module.scss";
 
 import LeftIcon from "../icons/left.svg";
 import LightningIcon from "../icons/lightning.svg";
 import EyeIcon from "../icons/eye.svg";
 
-import { useLocation, useNavigate } from "react-router-dom";
-import { Mask, useMaskStore } from "../store/mask";
+import {useLocation, useNavigate} from "react-router-dom";
+import {Mask, useMaskStore} from "../store/mask";
 import Locale from "../locales";
-import { useAppConfig, useChatStore } from "../store";
-import { MaskAvatar } from "./mask";
-import { useCommand } from "../command";
+import {useAppConfig, useChatStore} from "../store";
+import {MaskAvatar} from "./mask";
+import {useCommand} from "../command";
+import {showConfirm} from "./ui-lib";
 
 function getIntersectionArea(aRect: DOMRect, bRect: DOMRect) {
   const xmin = Math.max(aRect.x, bRect.x);
@@ -123,17 +124,17 @@ export function NewChat() {
           onClick={() => navigate(Path.Home)}
         ></IconButton>
         {!state?.fromHome && (
-          <IconButton
-            text={Locale.NewChat.NotShow}
-            onClick={() => {
-              if (confirm(Locale.NewChat.ConfirmNoShow)) {
-                startChat();
-                config.update(
-                  (config) => (config.dontShowMaskSplashScreen = true),
-                );
-              }
-            }}
-          ></IconButton>
+            <IconButton
+                text={Locale.NewChat.NotShow}
+                onClick={async () => {
+                  if (await showConfirm(Locale.NewChat.ConfirmNoShow)) {
+                    startChat();
+                    config.update(
+                        (config) => (config.dontShowMaskSplashScreen = true),
+                    );
+                  }
+                }}
+            ></IconButton>
         )}
       </div>
       <div className={styles["mask-cards"]}>
