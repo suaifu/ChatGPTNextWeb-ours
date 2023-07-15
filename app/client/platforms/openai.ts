@@ -1,10 +1,18 @@
-import {DEFAULT_API_HOST, OpenaiPath, REQUEST_TIMEOUT_MS,} from "@/app/constant";
-import {useAccessStore, useAppConfig, useChatStore} from "@/app/store";
+import {
+  DEFAULT_API_HOST,
+  DEFAULT_MODELS,
+  OpenaiPath,
+  REQUEST_TIMEOUT_MS,
+} from "@/app/constant";
+import { useAccessStore, useAppConfig, useChatStore } from "@/app/store";
 
-import {ChatOptions, getHeaders, LLMApi, LLMModel, LLMUsage} from "../api";
+import { ChatOptions, getHeaders, LLMApi, LLMModel, LLMUsage } from "../api";
 import Locale from "../../locales";
-import {EventStreamContentType, fetchEventSource,} from "@fortaine/fetch-event-source";
-import {prettyObject} from "@/app/utils/format";
+import {
+  EventStreamContentType,
+  fetchEventSource,
+} from "@fortaine/fetch-event-source";
+import { prettyObject } from "@/app/utils/format";
 
 export interface OpenAIListModelResponse {
   object: string;
@@ -16,6 +24,8 @@ export interface OpenAIListModelResponse {
 }
 
 export class ChatGPTApi implements LLMApi {
+  private disableListModels = true;
+
   path(path: string): string {
     let openaiUrl = useAccessStore.getState().openaiUrl;
     if (openaiUrl.length === 0) {
@@ -239,6 +249,10 @@ export class ChatGPTApi implements LLMApi {
   }
 
   async models(): Promise<LLMModel[]> {
+    if (this.disableListModels) {
+      return DEFAULT_MODELS.slice();
+    }
+
     const res = await fetch(this.path(OpenaiPath.ListModelPath), {
       method: "GET",
       headers: {
@@ -247,8 +261,12 @@ export class ChatGPTApi implements LLMApi {
     });
 
     const resJson = (await res.json()) as OpenAIListModelResponse;
-    const chatModels = resJson.data.filter((m) => m.id.startsWith("gpt-"));
+    const chatModels = resJson.data?.filter((m) => m.id.startsWith("gpt-"));
     console.log("[Models]", chatModels);
+
+    if (!chatModels) {
+      return [];
+    }
 
     return chatModels.map((m) => ({
       name: m.id,

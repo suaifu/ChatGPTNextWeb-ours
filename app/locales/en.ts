@@ -1,94 +1,100 @@
-import {SubmitKey} from "../store/config";
-import {LocaleType} from "./index";
+import { SubmitKey } from "../store/config";
+import { LocaleType } from "./index";
 
+// if you are adding a new translation, please use PartialLocaleType instead of LocaleType
 const en: LocaleType = {
-    WIP: "Coming Soon...",
-    Error: {
-        Unauthorized:
-            "Unauthorized access, please enter access code in [auth](/#/auth) page.",
+  WIP: "Coming Soon...",
+  Error: {
+    Unauthorized:
+      "Unauthorized access, please enter access code in [auth](/#/auth) page.",
+  },
+  Auth: {
+    Title: "Need Access Code",
+    Tips: "Please enter access code below",
+    Input: "access code",
+    Confirm: "Confirm",
+    Later: "Later",
+  },
+  ChatItem: {
+    ChatItemCount: (count: number) => `${count} messages`,
+  },
+  Chat: {
+    SubTitle: (count: number) => `${count} messages`,
+    Actions: {
+      ChatList: "Go To Chat List",
+      CompressedHistory: "Compressed History Memory Prompt",
+      Export: "Export All Messages as Markdown",
+      Copy: "Copy",
+      Stop: "Stop",
+      Retry: "Retry",
+      Pin: "Pin",
+      PinToastContent: "Pinned 1 messages to contextual prompts",
+      PinToastAction: "View",
+      Delete: "Delete",
+      Edit: "Edit",
     },
-    Auth: {
-        Title: "Need Access Code",
-        Tips: "Please enter access code below",
-        Input: "access code",
-        Confirm: "Confirm",
-        Later: "Later",
+    Commands: {
+      new: "Start a new chat",
+      newm: "Start a new chat with mask",
+      next: "Next Chat",
+      prev: "Previous Chat",
+      clear: "Clear Context",
+      del: "Delete Chat",
     },
-    ChatItem: {
-        ChatItemCount: (count: number) => `${count} messages`,
+    InputActions: {
+      Stop: "Stop",
+      ToBottom: "To Latest",
+      Theme: {
+        auto: "Auto",
+        light: "Light Theme",
+        dark: "Dark Theme",
+      },
+      Prompt: "Prompts",
+      Masks: "Masks",
+      Clear: "Clear Context",
+      Settings: "Settings",
     },
-    Chat: {
-        SubTitle: (count: number) => `${count} messages`,
-        Actions: {
-            ChatList: "Go To Chat List",
-            CompressedHistory: "Compressed History Memory Prompt",
-            Export: "Export All Messages as Markdown",
-            Copy: "Copy",
-            Stop: "Stop",
-            Retry: "Retry",
-            Pin: "Pin",
-            PinToastContent: "Pinned 2 messages to contextual prompts",
-            PinToastAction: "View",
-            Delete: "Delete",
-            Edit: "Edit",
-        },
-        Commands: {
-            new: "Start a new chat",
-            newm: "Start a new chat with mask",
-            next: "Next Chat",
-            prev: "Previous Chat",
-            clear: "Clear Context",
-            del: "Delete Chat",
-        },
-        InputActions: {
-            Stop: "Stop",
-            ToBottom: "To Latest",
-            Theme: {
-                auto: "Auto",
-                light: "Light Theme",
-                dark: "Dark Theme",
-            },
-            Prompt: "Prompts",
-            Masks: "Masks",
-            Clear: "Clear Context",
-            Settings: "Settings",
-        },
-        Rename: "Rename Chat",
-        Typing: "Typing…",
-        Input: (submitKey: string) => {
-            var inputHints = `${submitKey} to send`;
-            if (submitKey === String(SubmitKey.Enter)) {
-                inputHints += ", Shift + Enter to wrap";
-            }
-            return inputHints + ", / to search prompts, : to use commands";
-        },
-        Send: "Send",
-        Config: {
-            Reset: "Reset to Default",
-            SaveAs: "Save as Mask",
-        },
+    Rename: "Rename Chat",
+    Typing: "Typing…",
+    Input: (submitKey: string) => {
+      var inputHints = `${submitKey} to send`;
+      if (submitKey === String(SubmitKey.Enter)) {
+        inputHints += ", Shift + Enter to wrap";
+      }
+      return inputHints + ", / to search prompts, : to use commands";
     },
-    Export: {
-        Title: "Export Messages",
-        Copy: "Copy All",
-        Download: "Download",
-        MessageFromYou: "Message From You",
-        MessageFromChatGPT: "Message From ChatGPT",
-        Share: "Share to ShareGPT",
-        Format: {
-            Title: "Export Format",
-            SubTitle: "Markdown or PNG Image",
-        },
-        IncludeContext: {
-            Title: "Including Context",
-            SubTitle: "Export context prompts in mask or not",
-        },
-        Steps: {
-            Select: "Select",
-            Preview: "Preview",
-        },
+    Send: "Send",
+    Config: {
+      Reset: "Reset to Default",
+      SaveAs: "Save as Mask",
     },
-    Select: {
+    IsContext: "Contextual Prompt",
+  },
+  Export: {
+    Title: "Export Messages",
+    Copy: "Copy All",
+    Download: "Download",
+    MessageFromYou: "Message From You",
+    MessageFromChatGPT: "Message From ChatGPT",
+    Share: "Share to ShareGPT",
+    Format: {
+      Title: "Export Format",
+      SubTitle: "Markdown or PNG Image",
+    },
+    IncludeContext: {
+      Title: "Including Context",
+      SubTitle: "Export context prompts in mask or not",
+    },
+    Steps: {
+      Select: "Select",
+      Preview: "Preview",
+    },
+    Image: {
+      Toast: "Capturing Image...",
+      Modal: "Long press or right click to save image",
+    },
+  },
+  Select: {
     Search: "Search",
     All: "Select All",
     Latest: "Select Latest",
@@ -110,129 +116,142 @@ const en: LocaleType = {
     Revert: "Revert",
   },
   Settings: {
-      Title: "Settings",
-      SubTitle: "All Settings",
-      Danger: {
-          Reset: {
-              Title: "Reset All Settings",
-              SubTitle: "Reset all setting items to default",
-              Action: "Reset",
-              Confirm: "Confirm to reset all settings to default?",
-          },
-          Clear: {
-              Title: "Clear All Data",
-              SubTitle: "Clear all messages and settings",
-              Action: "Clear",
-              Confirm: "Confirm to clear all messages and settings?",
-          },
+    Title: "Settings",
+    SubTitle: "All Settings",
+    Danger: {
+      Reset: {
+        Title: "Reset All Settings",
+        SubTitle: "Reset all setting items to default",
+        Action: "Reset",
+        Confirm: "Confirm to reset all settings to default?",
       },
-      Lang: {
-          Name: "Language", // ATTENTION: if you wanna add a new translation, please do not translate this value, leave it as `Language`
-          All: "All Languages",
+      Clear: {
+        Title: "Clear All Data",
+        SubTitle: "Clear all messages and settings",
+        Action: "Clear",
+        Confirm: "Confirm to clear all messages and settings?",
       },
-      Avatar: "Avatar",
-      FontSize: {
-          Title: "Font Size",
-          SubTitle: "Adjust font size of chat content",
-      },
+    },
+    Lang: {
+      Name: "Language", // ATTENTION: if you wanna add a new translation, please do not translate this value, leave it as `Language`
+      All: "All Languages",
+    },
+    Avatar: "Avatar",
+    FontSize: {
+      Title: "Font Size",
+      SubTitle: "Adjust font size of chat content",
+    },
+    InjectSystemPrompts: {
+      Title: "Inject System Prompts",
+      SubTitle: "Inject a global system prompt for every request",
+    },
+    InputTemplate: {
+      Title: "Input Template",
+      SubTitle: "Newest message will be filled to this template",
+    },
 
-      InputTemplate: {
-          Title: "Input Template",
-          SubTitle: "Newest message will be filled to this template",
+    Update: {
+      Version: (x: string) => `Version: ${x}`,
+      IsLatest: "Latest version",
+      CheckUpdate: "Check Update",
+      IsChecking: "Checking update...",
+      FoundUpdate: (x: string) => `Found new version: ${x}`,
+      GoToUpdate: "Update",
+    },
+    SendKey: "Send Key",
+    Theme: "Theme",
+    TightBorder: "Tight Border",
+    SendPreviewBubble: {
+      Title: "Send Preview Bubble",
+      SubTitle: "Preview markdown in bubble",
+    },
+    Mask: {
+      Splash: {
+        Title: "Mask Splash Screen",
+        SubTitle: "Show a mask splash screen before starting new chat",
       },
-
-      Update: {
-          Version: (x: string) => `Version: ${x}`,
-          IsLatest: "Latest version",
-          CheckUpdate: "Check Update",
-          IsChecking: "Checking update...",
-          FoundUpdate: (x: string) => `Found new version: ${x}`,
-          GoToUpdate: "Update",
+      Builtin: {
+        Title: "Hide Builtin Masks",
+        SubTitle: "Hide builtin masks in mask list",
       },
-      SendKey: "Send Key",
-      Theme: "Theme",
-      TightBorder: "Tight Border",
-      SendPreviewBubble: {
-          Title: "Send Preview Bubble",
-          SubTitle: "Preview markdown in bubble",
+    },
+    Prompt: {
+      Disable: {
+        Title: "Disable auto-completion",
+        SubTitle: "Input / to trigger auto-completion",
       },
-      Mask: {
-          Title: "Mask Splash Screen",
-          SubTitle: "Show a mask splash screen before starting new chat",
+      List: "Prompt List",
+      ListCount: (builtin: number, custom: number) =>
+        `${builtin} built-in, ${custom} user-defined`,
+      Edit: "Edit",
+      Modal: {
+        Title: "Prompt List",
+        Add: "Add One",
+        Search: "Search Prompts",
       },
-      Prompt: {
-          Disable: {
-              Title: "Disable auto-completion",
-              SubTitle: "Input / to trigger auto-completion",
-          },
-          List: "Prompt List",
-          ListCount: (builtin: number, custom: number) =>
-              `${builtin} built-in, ${custom} user-defined`,
-          Edit: "Edit",
-          Modal: {
-              Title: "Prompt List",
-              Add: "Add One",
-              Search: "Search Prompts",
-          },
-          EditModal: {
-              Title: "Edit Prompt",
-          },
+      EditModal: {
+        Title: "Edit Prompt",
       },
-      HistoryCount: {
-          Title: "Attached Messages Count",
-          SubTitle: "Number of sent messages attached per request",
+    },
+    HistoryCount: {
+      Title: "Attached Messages Count",
+      SubTitle: "Number of sent messages attached per request",
+    },
+    CompressThreshold: {
+      Title: "History Compression Threshold",
+      SubTitle:
+        "Will compress if uncompressed messages length exceeds the value",
+    },
+    Token: {
+      Title: "API Key",
+      SubTitle: "Use your key to ignore access code limit",
+      Placeholder: "OpenAI API Key",
+    },
+    Usage: {
+      Title: "Account Balance",
+      SubTitle(used: any, total: any) {
+        return `Used this month $${used}, subscription $${total}`;
       },
-      CompressThreshold: {
-          Title: "History Compression Threshold",
-          SubTitle:
-              "Will compress if uncompressed messages length exceeds the value",
-      },
-      Token: {
-          Title: "API Key",
-          SubTitle: "Use your key to ignore access code limit",
-          Placeholder: "OpenAI API Key",
-      },
-      Usage: {
-          Title: "Account Balance",
-          SubTitle(used: any, total: any) {
-              return `Used this month $${used}, subscription $${total}`;
-          },
-          IsChecking: "Checking...",
-          Check: "Check",
-          NoAccess: "Enter API Key to check balance",
-      },
-      AccessCode: {
-          Title: "Access Code",
-          SubTitle: "Access control enabled",
-          Placeholder: "Need Access Code",
-      },
-      Endpoint: {
-          Title: "Endpoint",
-          SubTitle: "Custom endpoint must start with http(s)://",
-      },
-      Model: "Model",
-      Temperature: {
-          Title: "Temperature",
-          SubTitle: "A larger value makes the more random output",
-      },
-      TopP: {
-          Title: "Top P",
-          SubTitle: "Do not alter this value together with temperature",
-      },
-      MaxTokens: {
-          Title: "Max Tokens",
-          SubTitle: "Maximum length of input tokens and generated tokens",
-      },
-      PresencePenalty: {
-          Title: "Presence Penalty",
-          SubTitle:
-              "A larger value increases the likelihood to talk about new topics",
-      },
-      FrequencyPenalty: {
-          Title: "Frequency Penalty",
-          SubTitle:
-              "A larger value decreasing the likelihood to repeat the same line",
-      },
+      IsChecking: "Checking...",
+      Check: "Check",
+      NoAccess: "Enter API Key to check balance",
+    },
+    AccessCode: {
+      Title: "Access Code",
+      SubTitle: "Access control enabled",
+      Placeholder: "Need Access Code",
+    },
+    Endpoint: {
+      Title: "Endpoint",
+      SubTitle: "Custom endpoint must start with http(s)://",
+    },
+    CustomModel: {
+      Title: "Custom Models",
+      SubTitle: "Add extra model options, separate by comma",
+    },
+    Model: "Model",
+    Temperature: {
+      Title: "Temperature",
+      SubTitle: "A larger value makes the more random output",
+    },
+    TopP: {
+      Title: "Top P",
+      SubTitle: "Do not alter this value together with temperature",
+    },
+    MaxTokens: {
+      Title: "Max Tokens",
+      SubTitle: "Maximum length of input tokens and generated tokens",
+    },
+    PresencePenalty: {
+      Title: "Presence Penalty",
+      SubTitle:
+        "A larger value increases the likelihood to talk about new topics",
+    },
+    FrequencyPenalty: {
+      Title: "Frequency Penalty",
+      SubTitle:
+        "A larger value decreasing the likelihood to repeat the same line",
+    },
   },
   Store: {
     DefaultTopic: "New Conversation",
@@ -252,11 +271,11 @@ const en: LocaleType = {
     Failed: "Copy failed, please grant permission to access clipboard",
   },
   Context: {
-      Toast: (x: any) => `With ${x} contextual prompts`,
-      Edit: "Current Chat Settings",
-      Add: "Add a Prompt",
-      Clear: "Context Cleared",
-      Revert: "Revert",
+    Toast: (x: any) => `With ${x} contextual prompts`,
+    Edit: "Current Chat Settings",
+    Add: "Add a Prompt",
+    Clear: "Context Cleared",
+    Revert: "Revert",
   },
   Plugin: {
     Name: "Plugin",
@@ -284,42 +303,47 @@ const en: LocaleType = {
       Clone: "Clone",
     },
     Config: {
-        Avatar: "Bot Avatar",
-        Name: "Bot Name",
-        Sync: {
-            Title: "Use Global Config",
-            SubTitle: "Use global config in this chat",
-            Confirm: "Confirm to override custom config with global config?",
-        },
-        HideContext: {
-            Title: "Hide Context Prompts",
-            SubTitle: "Do not show in-context prompts in chat",
-        },
+      Avatar: "Bot Avatar",
+      Name: "Bot Name",
+      Sync: {
+        Title: "Use Global Config",
+        SubTitle: "Use global config in this chat",
+        Confirm: "Confirm to override custom config with global config?",
+      },
+      HideContext: {
+        Title: "Hide Context Prompts",
+        SubTitle: "Do not show in-context prompts in chat",
+      },
+      Share: {
+        Title: "Share This Mask",
+        SubTitle: "Generate a link to this mask",
+        Action: "Copy Link",
+      },
     },
   },
-    NewChat: {
-        Return: "Return",
-        Skip: "Just Start",
-        Title: "Pick a Mask",
-        SubTitle: "Chat with the Soul behind the Mask",
-        More: "Find More",
-        NotShow: "Never Show Again",
-        ConfirmNoShow: "Confirm to disable？You can enable it in settings later.",
-    },
+  NewChat: {
+    Return: "Return",
+    Skip: "Just Start",
+    Title: "Pick a Mask",
+    SubTitle: "Chat with the Soul behind the Mask",
+    More: "Find More",
+    NotShow: "Never Show Again",
+    ConfirmNoShow: "Confirm to disable？You can enable it in settings later.",
+  },
 
-    UI: {
-        Confirm: "Confirm",
-        Cancel: "Cancel",
-        Close: "Close",
-        Create: "Create",
-        Edit: "Edit",
-    },
-    Exporter: {
-        Model: "Model",
-        Messages: "Messages",
-        Topic: "Topic",
-        Time: "Time",
-    },
+  UI: {
+    Confirm: "Confirm",
+    Cancel: "Cancel",
+    Close: "Close",
+    Create: "Create",
+    Edit: "Edit",
+  },
+  Exporter: {
+    Model: "Model",
+    Messages: "Messages",
+    Topic: "Topic",
+    Time: "Time",
+  },
 };
 
 export default en;
