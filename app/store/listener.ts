@@ -1,11 +1,18 @@
 import { collection, getFirestore } from "firebase/firestore";
-import { firebase } from "@/app/api/firebase";
+import { firebaseConfig } from "@/app/api/firebase";
 import { initializeApp } from "@firebase/app";
+import { initializeAppCheck, ReCaptchaV3Provider } from "@firebase/app-check";
 
 // 初始化 Firebase 应用
-const firebaseApp = initializeApp(firebase);
-const firestore = getFirestore(firebaseApp);
-export const messagesCollectionRef = collection(firestore, "messages");
+const firebaseApp = initializeApp(firebaseConfig);
+const firestoredb = getFirestore(firebaseApp);
+export const messagesCollectionRef = collection(firestoredb, "messages");
+
+// App Check
+// const appCheck = initializeAppCheck(firebaseApp, {
+//     provider: new ReCaptchaV3Provider('92538834-5C9B-404E-AF77-4036127F37CC'),
+//     isTokenAutoRefreshEnabled: true
+// });
 
 //包含聊天信息的对象
 // addDoc(collection(getFirestore(firebaseApp), "messages"), {

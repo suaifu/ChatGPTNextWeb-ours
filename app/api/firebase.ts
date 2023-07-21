@@ -30,4 +30,4 @@ export function getFirebaseConfig() {
 }
 
 // 将上一步复制的配置信息粘贴到这里
-export const firebase = getFirebaseConfig();
+export const firebaseConfig = getFirebaseConfig();
