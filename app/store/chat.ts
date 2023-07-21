@@ -18,6 +18,11 @@ import { prettyObject } from "../utils/format";
 import { estimateTokenLength } from "../utils/token";
 import { nanoid } from "nanoid";
 
+// 这里是信息检测的处理--------
+import { addDoc, serverTimestamp } from "firebase/firestore";
+import { messagesCollectionRef } from "@/app/store/listener";
+//------------------------------
+
 export type ChatMessage = RequestMessage & {
   date: string;
   streaming?: boolean;
@@ -308,6 +313,22 @@ export const useChatStore = create<ChatStore>()(
             botMessage,
           ]);
         });
+        //-----------
+        //创建一个包含用户输入信息的对象
+        const userMessageData = {
+          role: "user",
+          message: content,
+          timestamp: serverTimestamp(),
+        };
+
+        // 将用户消息添加到 Firestore 的 messages 集合中
+        try {
+          addDoc(messagesCollectionRef, userMessageData);
+          console.log("用户消息已成功添加到 Firestore。");
+        } catch (error) {
+          console.error("添加用户消息到 Firestore 时出现错误：", error);
+        }
+        //------------------------------------
 
         // make request
         api.llm.chat({
