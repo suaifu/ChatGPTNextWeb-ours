@@ -1,7 +1,7 @@
 export const OWNER = "suaifu";
 export const REPO = "ChatGPTNextWeb-ours";
-export const REPO_URL = `https://www.guoshuaifu.cn/index.php/chatgpt-use.html`;
-export const REWARD_URL = `https://www.guoshuaifu.cn/index.php/shang.html`;
+export const REPO_URL = `https://www.guoshuaifu.cn/chatgpt-use.html`;
+export const REWARD_URL = `https://www.guoshuaifu.cn/shang.html`;
 // export const REWARD_URL = `alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=YES&amount=5&userId=2088802037530912&memo=打赏`;
 export const ISSUE_URL = `https://github.com/${OWNER}/${REPO}/issues`;
 export const UPDATE_URL = `https://github.com/${OWNER}/${REPO}#keep-updated`;
@@ -9,7 +9,7 @@ export const RELEASE_URL = `https://github.com/${OWNER}/${REPO}/releases`;
 export const FETCH_COMMIT_URL = `https://api.github.com/repos/${OWNER}/${REPO}/commits?per_page=1`;
 export const FETCH_TAG_URL = `https://api.github.com/repos/${OWNER}/${REPO}/tags?per_page=1`;
 export const RUNTIME_CONFIG_DOM = "danger-runtime-config";
-export const DEFAULT_API_HOST = "https://chatgpt1.nextweb.fun/api/proxy";
+export const DEFAULT_API_HOST = "https://api.talkai.icu";
 
 export enum Path {
   Home = "/",
