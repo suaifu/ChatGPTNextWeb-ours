@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const OPENAI_URL = "api.openai.com";
 const DEFAULT_PROTOCOL = "https";
-const PROTOCOL = process.env.PROTOCOL ?? DEFAULT_PROTOCOL;
-const BASE_URL = process.env.BASE_URL ?? OPENAI_URL;
+const PROTOCOL = process.env.PROTOCOL || DEFAULT_PROTOCOL;
+const BASE_URL = process.env.BASE_URL || OPENAI_URL;
 const DISABLE_GPT4 = !!process.env.DISABLE_GPT4;
 
 export async function requestOpenai(req: NextRequest) {
@@ -18,6 +18,10 @@ export async function requestOpenai(req: NextRequest) {
 
   if (!baseUrl.startsWith("http")) {
     baseUrl = `${PROTOCOL}://${baseUrl}`;
+  }
+
+  if (baseUrl.endsWith('/')) {
+    baseUrl = baseUrl.slice(0, -1);
   }
 
   console.log("[Proxy] ", openaiPath);
@@ -43,6 +47,8 @@ export async function requestOpenai(req: NextRequest) {
     },
     method: req.method,
     body: req.body,
+    // to fix #2485: https://stackoverflow.com/questions/55920957/cloudflare-worker-typeerror-one-time-use-body
+    redirect: "manual",
     // @ts-ignore
     duplex: "half",
     signal: controller.signal,

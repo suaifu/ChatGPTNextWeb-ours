@@ -11,6 +11,7 @@ import {
   DEFAULT_INPUT_TEMPLATE,
   DEFAULT_SYSTEM_TEMPLATE,
   StoreKey,
+  SUMMARIZE_MODEL,
 } from "../constant";
 import { api, RequestMessage } from "../client/api";
 import { ChatControllerPool } from "../client/controller";
@@ -78,6 +79,11 @@ function createEmptySession(): ChatSession {
 
     mask: createEmptyMask(),
   };
+}
+
+function getSummarizeModel(currentModel: string) {
+  // if it is using gpt-* models, force to use 3.5 to summarize
+  return currentModel.startsWith("gpt") ? SUMMARIZE_MODEL : currentModel;
 }
 
 interface ChatStore {
@@ -332,7 +338,7 @@ export const useChatStore = create<ChatStore>()(
           },
           onError(error) {
             const isAborted = error.message.includes("aborted");
-            botMessage.content =
+            botMessage.content +=
               "\n\n" +
               prettyObject({
                 error: true,
@@ -479,6 +485,7 @@ export const useChatStore = create<ChatStore>()(
       },
 
       summarizeSession() {
+        const config = useAppConfig.getState();
         const session = get().currentSession();
 
         // remove error messages if any
@@ -487,6 +494,7 @@ export const useChatStore = create<ChatStore>()(
         // should summarize topic after chating more than 50 words
         const SUMMARIZE_MIN_LEN = 50;
         if (
+          config.enableAutoGenerateTitle &&
           session.topic === DEFAULT_TOPIC &&
           countMessages(messages) >= SUMMARIZE_MIN_LEN
         ) {
@@ -499,7 +507,7 @@ export const useChatStore = create<ChatStore>()(
           api.llm.chat({
             messages: topicMessages,
             config: {
-              model: "gpt-3.5-turbo",
+              model: getSummarizeModel(session.mask.modelConfig.model),
             },
             onFinish(message) {
               get().updateCurrentSession(
@@ -553,7 +561,11 @@ export const useChatStore = create<ChatStore>()(
                 date: "",
               }),
             ),
-            config: { ...modelConfig, stream: true },
+            config: {
+              ...modelConfig,
+              stream: true,
+              model: getSummarizeModel(session.mask.modelConfig.model),
+            },
             onUpdate(message) {
               session.memoryPrompt = message;
             },
@@ -589,7 +601,7 @@ export const useChatStore = create<ChatStore>()(
     }),
     {
       name: StoreKey.Chat,
-      version: 3,
+      version: 3.1,
       migrate(persistedState, version) {
         const state = persistedState as any;
         const newState = JSON.parse(JSON.stringify(state)) as ChatStore;
@@ -614,6 +626,23 @@ export const useChatStore = create<ChatStore>()(
           newState.sessions.forEach((s) => {
             s.id = nanoid();
             s.messages.forEach((m) => (m.id = nanoid()));
+          });
+        }
+
+        // Enable `enableInjectSystemPrompts` attribute for old sessions.
+        // Resolve issue of old sessions not automatically enabling.
+        if (version < 3.1) {
+          newState.sessions.forEach((s) => {
+            if (
+              // Exclude those already set by user
+              !s.mask.modelConfig.hasOwnProperty("enableInjectSystemPrompts")
+            ) {
+              // Because users may have changed this configuration,
+              // the user's current configuration is used instead of the default
+              const config = useAppConfig.getState();
+              s.mask.modelConfig.enableInjectSystemPrompts =
+                config.modelConfig.enableInjectSystemPrompts;
+            }
           });
         }
 
