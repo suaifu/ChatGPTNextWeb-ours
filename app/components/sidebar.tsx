@@ -1,8 +1,8 @@
-import {useEffect, useRef} from "react";
+import { useEffect, useRef } from "react";
 
 import styles from "./home.module.scss";
 
-import {IconButton} from "./button";
+import { IconButton } from "./button";
 import SettingsIcon from "../icons/settings.svg";
 import Shang from "../icons/shang.svg";
 import ChatGptIcon from "../icons/chatgpt.svg";
@@ -10,17 +10,25 @@ import AddIcon from "../icons/add.svg";
 import CloseIcon from "../icons/close.svg";
 import MaskIcon from "../icons/mask.svg";
 import PluginIcon from "../icons/plugin.svg";
+import DragIcon from "../icons/drag.svg";
 
 import Locale from "../locales";
 
-import {useAppConfig, useChatStore} from "../store";
+import { useAppConfig, useChatStore } from "../store";
 
-import {MAX_SIDEBAR_WIDTH, MIN_SIDEBAR_WIDTH, NARROW_SIDEBAR_WIDTH, Path, REWARD_URL,} from "../constant";
+import {
+  MAX_SIDEBAR_WIDTH,
+  MIN_SIDEBAR_WIDTH,
+  NARROW_SIDEBAR_WIDTH,
+  Path,
+  REPO_URL,
+  REWARD_URL,
+} from "../constant";
 
-import {Link, useNavigate} from "react-router-dom";
-import {useMobileScreen} from "../utils";
+import { Link, useNavigate } from "react-router-dom";
+import { useMobileScreen } from "../utils";
 import dynamic from "next/dynamic";
-import {showConfirm, showToast} from "./ui-lib";
+import { showConfirm, showToast } from "./ui-lib";
 
 const ChatList = dynamic(async () => (await import("./chat-list")).ChatList, {
   loading: () => null,
@@ -111,7 +119,7 @@ export function SideBar(props: { className?: string }) {
     >
       <div className={styles["sidebar-header"]} data-tauri-drag-region>
         <div className={styles["sidebar-title"]} data-tauri-drag-region>
-          ChatGPT 小助手
+          ChatGPT 专属助手
         </div>
         <div className={styles["sidebar-sub-title"]}>
           <p>
@@ -159,12 +167,12 @@ export function SideBar(props: { className?: string }) {
         <div className={styles["sidebar-actions"]}>
           <div className={styles["sidebar-action"] + " " + styles.mobile}>
             <IconButton
-                icon={<CloseIcon/>}
-                onClick={async () => {
-                  if (await showConfirm(Locale.Home.DeleteChat)) {
-                    chatStore.deleteSession(chatStore.currentSessionIndex);
-                  }
-                }}
+              icon={<CloseIcon />}
+              onClick={async () => {
+                if (await showConfirm(Locale.Home.DeleteChat)) {
+                  chatStore.deleteSession(chatStore.currentSessionIndex);
+                }
+              }}
             />
           </div>
           <div className={styles["sidebar-action"]}>
@@ -178,7 +186,7 @@ export function SideBar(props: { className?: string }) {
           {/*  </a>*/}
           {/*</div>*/}
           <div className={styles["sidebar-action"]}>
-            <a href={REWARD_URL} target="_blank">
+            <a href={REWARD_URL} target="_blank" rel="noopener noreferrer">
               <IconButton icon={<Shang />} shadow />
             </a>
           </div>
@@ -203,7 +211,9 @@ export function SideBar(props: { className?: string }) {
       <div
         className={styles["sidebar-drag"]}
         onMouseDown={(e) => onDragMouseDown(e as any)}
-      ></div>
+      >
+        <DragIcon />
+      </div>
     </div>
   );
 }

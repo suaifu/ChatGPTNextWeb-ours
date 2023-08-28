@@ -3,6 +3,7 @@ import "./styles/globals.scss";
 import "./styles/markdown.scss";
 import "./styles/highlight.scss";
 import { getClientConfig } from "./config/client";
+import { type Metadata } from "next";
 
 export const metadata = {
   title: "ChatGPT Learn Web",
@@ -18,7 +19,7 @@ export const metadata = {
   ],
   appleWebApp: {
     title: "ChatGPT Learn Web",
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
   },
 };
 

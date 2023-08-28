@@ -1,11 +1,11 @@
-import {SubmitKey} from "../store/config";
-import type {PartialLocaleType} from "./index";
+import { SubmitKey } from "../store/config";
+import type { PartialLocaleType } from "./index";
 
 const de: PartialLocaleType = {
   WIP: "In Bearbeitung...",
   Error: {
     Unauthorized:
-        "Unbefugter Zugriff, bitte geben Sie den Zugangscode auf der Einstellungsseite ein.",
+      "Unbefugter Zugriff, bitte geben Sie den Zugangscode auf der [Einstellungsseite](/#/auth) ein.",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} Nachrichten`,
@@ -156,12 +156,12 @@ const de: PartialLocaleType = {
     PresencePenalty: {
       Title: "Presence Penalty", //Anwesenheitsstrafe
       SubTitle:
-          "Ein größerer Wert erhöht die Wahrscheinlichkeit, dass über neue Themen gesprochen wird",
+        "Ein größerer Wert erhöht die Wahrscheinlichkeit, dass über neue Themen gesprochen wird",
     },
     FrequencyPenalty: {
       Title: "Frequency Penalty", // HäufigkeitStrafe
       SubTitle:
-          "Ein größerer Wert, der die Wahrscheinlichkeit verringert, dass dieselbe Zeile wiederholt wird",
+        "Ein größerer Wert, der die Wahrscheinlichkeit verringert, dass dieselbe Zeile wiederholt wird",
     },
   },
   Store: {
@@ -191,6 +191,9 @@ const de: PartialLocaleType = {
   },
   Plugin: {
     Name: "Plugin",
+  },
+  FineTuned: {
+    Sysmessage: "Du bist ein Assistent, der",
   },
   Mask: {
     Name: "Mask",

@@ -1,11 +1,11 @@
-import {SubmitKey} from "../store/config";
-import type {PartialLocaleType} from "./index";
+import { SubmitKey } from "../store/config";
+import type { PartialLocaleType } from "./index";
 
 const ru: PartialLocaleType = {
   WIP: "Скоро...",
   Error: {
     Unauthorized:
-        "Несанкционированный доступ. Пожалуйста, введите код доступа на странице настроек.",
+      "Несанкционированный доступ. Пожалуйста, введите код доступа на [странице](/#/auth) настроек.",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} сообщений`,
@@ -156,12 +156,12 @@ const ru: PartialLocaleType = {
     PresencePenalty: {
       Title: "Штраф за повторения",
       SubTitle:
-          "Чем выше значение, тем больше вероятность общения на новые темы",
+        "Чем выше значение, тем больше вероятность общения на новые темы",
     },
     FrequencyPenalty: {
       Title: "Штраф за частоту",
       SubTitle:
-          "Большее значение снижает вероятность повторения одной и той же строки",
+        "Большее значение снижает вероятность повторения одной и той же строки",
     },
   },
   Store: {
@@ -190,6 +190,9 @@ const ru: PartialLocaleType = {
   },
   Plugin: {
     Name: "Плагин",
+  },
+  FineTuned: {
+    Sysmessage: "Вы - ассистент, который",
   },
   Mask: {
     Name: "Маска",
@@ -228,7 +231,7 @@ const ru: PartialLocaleType = {
     More: "Найти еще",
     NotShow: "Не показывать снова",
     ConfirmNoShow:
-        "Подтвердите отключение? Вы можете включить это позже в настройках.",
+      "Подтвердите отключение? Вы можете включить это позже в настройках.",
   },
 
   UI: {

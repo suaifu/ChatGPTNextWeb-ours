@@ -1,11 +1,11 @@
-import {SubmitKey} from "../store/config";
-import type {PartialLocaleType} from "./index";
+import { SubmitKey } from "../store/config";
+import type { PartialLocaleType } from "./index";
 
 const cs: PartialLocaleType = {
   WIP: "V přípravě...",
   Error: {
     Unauthorized:
-        "Neoprávněný přístup, zadejte přístupový kód na stránce nastavení.",
+      "Neoprávněný přístup, zadejte přístupový kód na [stránce](/#/auth) nastavení.",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} zpráv`,
@@ -159,7 +159,7 @@ const cs: PartialLocaleType = {
     FrequencyPenalty: {
       Title: "Frekvenční penalizace",
       SubTitle:
-          "Větší hodnota snižující pravděpodobnost opakování stejného řádku",
+        "Větší hodnota snižující pravděpodobnost opakování stejného řádku",
     },
   },
   Store: {
@@ -187,6 +187,9 @@ const cs: PartialLocaleType = {
   },
   Plugin: {
     Name: "Plugin",
+  },
+  FineTuned: {
+    Sysmessage: "Jste asistent, který",
   },
   Mask: {
     Name: "Maska",

@@ -1,11 +1,11 @@
-import {SubmitKey} from "../store/config";
-import type {PartialLocaleType} from "./index";
+import { SubmitKey } from "../store/config";
+import type { PartialLocaleType } from "./index";
 
 const fr: PartialLocaleType = {
   WIP: "Prochainement...",
   Error: {
     Unauthorized:
-        "Accès non autorisé, veuillez saisir le code d'accès dans la page des paramètres.",
+      "Accès non autorisé, veuillez saisir le code d'accès dans la [page](/#/auth) des paramètres.",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} messages en total`,
@@ -209,12 +209,12 @@ const fr: PartialLocaleType = {
     PresencePenalty: {
       Title: "Pénalité de présence",
       SubTitle:
-          "Une valeur plus élevée augmentera la probabilité d'introduire de nouveaux sujets",
+        "Une valeur plus élevée augmentera la probabilité d'introduire de nouveaux sujets",
     },
     FrequencyPenalty: {
       Title: "Pénalité de fréquence",
       SubTitle:
-          "Une valeur plus élevée diminuant la probabilité de répéter la même ligne",
+        "Une valeur plus élevée diminuant la probabilité de répéter la même ligne",
     },
   },
   Store: {
@@ -243,6 +243,9 @@ const fr: PartialLocaleType = {
   },
   Plugin: {
     Name: "Extension",
+  },
+  FineTuned: {
+    Sysmessage: "Eres un asistente que",
   },
   Mask: {
     Name: "Masque",
@@ -293,7 +296,7 @@ const fr: PartialLocaleType = {
     More: "En savoir plus",
     NotShow: "Ne pas afficher à nouveau",
     ConfirmNoShow:
-        "Confirmez-vous vouloir désactiver cela? Vous pouvez le réactiver plus tard dans les paramètres.",
+      "Confirmez-vous vouloir désactiver cela? Vous pouvez le réactiver plus tard dans les paramètres.",
   },
 
   UI: {

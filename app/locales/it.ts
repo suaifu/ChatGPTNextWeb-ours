@@ -1,11 +1,11 @@
-import {SubmitKey} from "../store/config";
-import type {PartialLocaleType} from "./index";
+import { SubmitKey } from "../store/config";
+import type { PartialLocaleType } from "./index";
 
 const it: PartialLocaleType = {
   WIP: "Work in progress...",
   Error: {
     Unauthorized:
-        "Accesso non autorizzato, inserire il codice di accesso nella pagina delle impostazioni.",
+      "Accesso non autorizzato, inserire il codice di accesso nella [pagina](/#/auth) delle impostazioni.",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} messaggi`,
@@ -156,12 +156,12 @@ const it: PartialLocaleType = {
     PresencePenalty: {
       Title: "Penalità di presenza",
       SubTitle:
-          "Un valore maggiore aumenta la probabilità di parlare di nuovi argomenti",
+        "Un valore maggiore aumenta la probabilità di parlare di nuovi argomenti",
     },
     FrequencyPenalty: {
       Title: "Penalità di frequenza",
       SubTitle:
-          "Un valore maggiore che diminuisce la probabilità di ripetere la stessa riga",
+        "Un valore maggiore che diminuisce la probabilità di ripetere la stessa riga",
     },
   },
   Store: {
@@ -190,6 +190,9 @@ const it: PartialLocaleType = {
   },
   Plugin: {
     Name: "Plugin",
+  },
+  FineTuned: {
+    Sysmessage: "Sei un assistente che",
   },
   Mask: {
     Name: "Mask",

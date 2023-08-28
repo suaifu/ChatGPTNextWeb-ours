@@ -1,11 +1,11 @@
-import {SubmitKey} from "../store/config";
-import type {PartialLocaleType} from "./index";
+import { SubmitKey } from "../store/config";
+import type { PartialLocaleType } from "./index";
 
 const tr: PartialLocaleType = {
   WIP: "Çalışma devam ediyor...",
   Error: {
     Unauthorized:
-        "Yetkisiz erişim, lütfen erişim kodunu ayarlar sayfasından giriniz.",
+      "Yetkisiz erişim, lütfen erişim kodunu ayarlar [sayfasından](/#/auth) giriniz.",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} mesaj`,
@@ -147,22 +147,22 @@ const tr: PartialLocaleType = {
     Temperature: {
       Title: "Gerçeklik",
       SubTitle:
-          "Daha büyük bir değer girildiğinde gerçeklik oranı düşer ve daha rastgele çıktılar üretir",
+        "Daha büyük bir değer girildiğinde gerçeklik oranı düşer ve daha rastgele çıktılar üretir",
     },
     MaxTokens: {
       Title: "Maksimum Belirteç",
       SubTitle:
-          "Girdi belirteçlerinin ve oluşturulan belirteçlerin maksimum uzunluğu",
+        "Girdi belirteçlerinin ve oluşturulan belirteçlerin maksimum uzunluğu",
     },
     PresencePenalty: {
       Title: "Varlık Cezası",
       SubTitle:
-          "Daha büyük bir değer, yeni konular hakkında konuşma olasılığını artırır",
+        "Daha büyük bir değer, yeni konular hakkında konuşma olasılığını artırır",
     },
     FrequencyPenalty: {
       Title: "Frekans Cezası",
       SubTitle:
-          "Aynı satırı tekrar etme olasılığını azaltan daha büyük bir değer",
+        "Aynı satırı tekrar etme olasılığını azaltan daha büyük bir değer",
     },
   },
   Store: {
@@ -190,6 +190,9 @@ const tr: PartialLocaleType = {
   },
   Plugin: {
     Name: "Plugin",
+  },
+  FineTuned: {
+    Sysmessage: "Sen bir asistansın",
   },
   Mask: {
     Name: "Mask",
