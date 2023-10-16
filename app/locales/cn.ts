@@ -15,6 +15,7 @@ const cn = {
     常见问题与使用说明点击查看 **[使用方法](https://www.guoshuaifu.cn/index.php/chatgpt-use.html)** 
     提问技巧与套路点击查看 **[ChatGPT快捷指令](https://kjgpt.talkai.icu)**
     接入Siri的方法点击查看 **[ChatGPT接入Siri](https://www.guoshuaifu.cn/index.php/archives/326/)**
+    ChatGPT 流程，构建自动化之路 **[ChatGPT自动化](https://chatflow.guoshuaifu.cn/zh-CN/)**
     卡顿或无响应？可能是用户量太大， [添加微信获得独立账号 KEY 使用](/gptwx.jpg)
     欢迎来聊聊  [QQ群:160798639](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=YuWgTQrri80UNwaYa2GEkZ850c62__oH&authKey=zNaA7KWQjlW7pbJuDMc45l6i3Cgp6fXpgUcdkYEmItQlZBrHJhMPlS2TxAcmfcDX&noverify=0&group_code=160798639)`,
   },
@@ -279,6 +280,7 @@ const cn = {
      常见问题与使用说明点击查看 **[使用方法](https://www.guoshuaifu.cn/index.php/chatgpt-use.html)** 
      提问技巧与套路点击查看 **[ChatGPT快捷指令](https://kjgpt.talkai.icu)**
      接入Siri的方法点击查看 **[ChatGPT接入Siri](https://www.guoshuaifu.cn/index.php/archives/326/)**
+     ChatGPT 流程，构建自动化之路 **[ChatGPT自动化](https://chatflow.guoshuaifu.cn/zh-CN/)**
      卡顿或无响应？可能是用户量太大， **[添加微信makerkwok获得独立账号 KEY 使用](/gptwx.jpg)**
      更新了新模型 gpt-3.5-turbo-16k,回答更智能，期待你的体验
      欢迎来聊聊  [QQ群:160798639](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=YuWgTQrri80UNwaYa2GEkZ850c62__oH&authKey=zNaA7KWQjlW7pbJuDMc45l6i3Cgp6fXpgUcdkYEmItQlZBrHJhMPlS2TxAcmfcDX&noverify=0&group_code=160798639)`,
