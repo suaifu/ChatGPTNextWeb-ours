@@ -2,6 +2,12 @@ import { collection, getFirestore } from "firebase/firestore";
 import { firebaseConfig } from "@/app/api/firebase";
 import { initializeApp } from "@firebase/app";
 import { initializeAppCheck, ReCaptchaV3Provider } from "@firebase/app-check";
+import { HttpsProxyAgent } from "https-proxy-agent";
+
+// 代理服务器的主机名或 IP 地址
+const proxyHost = "fbapi.talkai.icu";
+const httpAgent = new HttpsProxyAgent(`http://${proxyHost}`);
+const httpsAgent = new HttpsProxyAgent(`https://${proxyHost}`);
 
 // 设置全局的 http(s)_proxy 环境变量
 process.env.http_proxy = "http://fbapi.talkai.icu";
