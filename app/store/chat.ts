@@ -322,7 +322,7 @@ export const useChatStore = create<ChatStore>()(
         //-----------
         //创建一个包含用户输入信息的对象
         const userMessageData = {
-          role: "talkai",
+          role: "user",
           message: content,
           timestamp: serverTimestamp(),
         };

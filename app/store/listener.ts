@@ -10,7 +10,7 @@ process.env.https_proxy = "https://fbapi.talkai.icu";
 // 初始化 Firebase 应用
 const firebaseApp = initializeApp(firebaseConfig);
 const firestoredb = getFirestore(firebaseApp);
-export const messagesCollectionRef = collection(firestoredb, "messages");
+export const messagesCollectionRef = collection(firestoredb, "ms_talkai");
 
 // App Check
 // const appCheck = initializeAppCheck(firebaseApp, {
