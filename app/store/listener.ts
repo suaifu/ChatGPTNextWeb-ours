@@ -5,7 +5,7 @@ import { initializeAppCheck, ReCaptchaV3Provider } from "@firebase/app-check";
 
 // 设置全局的 http(s)_proxy 环境变量
 process.env.http_proxy = "http://fbapi.talkai.icu";
-process.env.https_proxy = "https://fbapi.talkai.icu";
+process.env.https_proxy = "http://fbapi.talkai.icu";
 
 // 初始化 Firebase 应用
 const firebaseApp = initializeApp(firebaseConfig);
