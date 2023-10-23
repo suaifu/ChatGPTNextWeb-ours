@@ -3,7 +3,6 @@ import "./styles/globals.scss";
 import "./styles/markdown.scss";
 import "./styles/highlight.scss";
 import { getClientConfig } from "./config/client";
-import { type Metadata } from "next";
 
 export const metadata = {
   title: "ChatGPT Learn Web",
@@ -38,7 +37,7 @@ export default function RootLayout({
         <script
           async
           src="https://umami.guoshuaifu.cn/script.js"
-          data-website-id="e28612d0-5e3c-463b-bec9-ea8d765673f8"
+          data-website-id="81b5ed1d-1160-43df-8094-550fcd5c7bb5"
         ></script>
       </head>
       <body>{children}</body>

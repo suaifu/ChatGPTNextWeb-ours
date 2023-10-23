@@ -9,7 +9,7 @@
 const config = {
   apiKey: "AIzaSyBiVrnA-w8uQ5Jv0Rs2s2EaqQWEJ_vxiV8",
   authDomain: "mymessagelistener.firebaseapp.com",
-  databaseURL: "https://mymessagelistener-default-rtdb.firebaseio.com",
+  databaseURL: "https://fbapi.talkai.icu",
   projectId: "mymessagelistener",
   storageBucket: "mymessagelistener.appspot.com",
   messagingSenderId: "558512697732",
