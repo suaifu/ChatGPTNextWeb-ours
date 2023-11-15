@@ -8,13 +8,13 @@ const cn = {
   Error: {
     Unauthorized: isApp
       ? "检测到无效 API Key，请前往[设置](/#/settings)页检查 API Key 是否配置正确。"
-      : `访问密码不正确或为空，[打赏](https://www.guoshuaifu.cn/index.php/shang.html)获取密码,请前往[登录](/#/auth)页输入正确的访问密码后解锁**使用**
+      : `访问密码不正确或为空，[打赏](https://www.guoshuaifu.cn/shang.html)获取密码,请前往[登录](/#/auth)页输入正确的访问密码后解锁**使用**
     也可添加微信号：**[makerkwok](/gptwx.jpg)** 获取密码，或者在[设置](/#/settings)页填入你自己的 OpenAI API Key。
     **提问：** 你可以在这里放一些常用问题吗？
     **回答：** 当然可以，还可以在这里放一些问题解答，太棒啦！
-    常见问题与使用说明点击查看 **[使用方法](https://www.guoshuaifu.cn/index.php/chatgpt-use.html)** 
+    常见问题与使用说明点击查看 **[使用方法](https://www.guoshuaifu.cn/chatgpt-use.html)** 
     提问技巧与套路点击查看 **[ChatGPT快捷指令](https://kjgpt.talkai.icu)**
-    接入Siri的方法点击查看 **[ChatGPT接入Siri](https://www.guoshuaifu.cn/index.php/archives/326/)**
+    接入Siri的方法点击查看 **[ChatGPT接入Siri](https://www.guoshuaifu.cn/archives/326/)**
     ChatGPT 流程，构建自动化之路 **[ChatGPT自动化](https://chatflow.guoshuaifu.cn/zh-CN/)**
     卡顿或无响应？可能是用户量太大， [添加微信获得独立账号 KEY 使用](/gptwx.jpg)
     欢迎来聊聊  [QQ群:160798639](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=YuWgTQrri80UNwaYa2GEkZ850c62__oH&authKey=zNaA7KWQjlW7pbJuDMc45l6i3Cgp6fXpgUcdkYEmItQlZBrHJhMPlS2TxAcmfcDX&noverify=0&group_code=160798639)`,
@@ -277,9 +277,9 @@ const cn = {
     DefaultTopic: "新的聊天",
     BotHello: ` **提问：** 我想让你做销售员。试着向我推销一些东西，但要让你试图推销的东西看起来比实际更有价值，并说服我购买它。现在我要假装你在打电话给我，问你打电话的目的是什么。我的提问"你好，请问你打电话是为了什么？"
      **回答：** 当然可以，很高兴给您打电话。我今天想向您介绍我们公司的最新产......，太棒啦！
-     常见问题与使用说明点击查看 **[使用方法](https://www.guoshuaifu.cn/index.php/chatgpt-use.html)** 
+     常见问题与使用说明点击查看 **[使用方法](https://www.guoshuaifu.cn/chatgpt-use.html)** 
      提问技巧与套路点击查看 **[ChatGPT快捷指令](https://kjgpt.talkai.icu)**
-     接入Siri的方法点击查看 **[ChatGPT接入Siri](https://www.guoshuaifu.cn/index.php/archives/326/)**
+     接入Siri的方法点击查看 **[ChatGPT接入Siri](https://www.guoshuaifu.cn/archives/326/)**
      ChatGPT 流程，构建自动化之路 **[ChatGPT自动化](https://chatflow.guoshuaifu.cn/zh-CN/)**
      卡顿或无响应？可能是用户量太大， **[添加微信makerkwok获得独立账号 KEY 使用](/gptwx.jpg)**
      更新了新模型 gpt-3.5-turbo-16k,回答更智能，期待你的体验
