@@ -8,15 +8,15 @@ const cn = {
   Error: {
     Unauthorized: isApp
       ? "检测到无效 API Key，请前往[设置](/#/settings)页检查 API Key 是否配置正确。"
-      : `访问密码不正确或为空，[打赏](https://www.guoshuaifu.cn/shang.html)获取密码,请前往[登录](/#/auth)页输入正确的访问密码后解锁**使用**
-    也可添加微信号：**[makerkwok](/gptwx.jpg)** 获取密码，或者在[设置](/#/settings)页填入你自己的 OpenAI API Key。
-    **提问：** 你可以在这里放一些常用问题吗？
-    **回答：** 当然可以，还可以在这里放一些问题解答，太棒啦！
+      : `访问密码不正确或为空噢，请点击[打赏](https://www.guoshuaifu.cn/shang.html)获取密码,再点击此处➜ [**登录**](/#/auth) 输入访问密码后解锁**使用**
+    也可添加微信号：**[makerkwok](/gptwx.jpg)** 索要密码✎，或者在[设置](/#/settings)页填入你自己的 OpenAI API Key，感谢您的使用。
+    **提问：** 你还有什么想问的吗？
+    **回答：** 你有任何关于某个特定主题的问题，我将尽力回答。无论是关于科学、历史、文化、技术还是其他领域，都可以提问。请告诉我你感兴趣的主题，我将尽力提供帮助。
     常见问题与使用说明点击查看 **[使用方法](https://www.guoshuaifu.cn/chatgpt-use.html)** 
     提问技巧与套路点击查看 **[ChatGPT快捷指令](https://kjgpt.talkai.icu)**
     接入Siri的方法点击查看 **[ChatGPT接入Siri](https://www.guoshuaifu.cn/archives/326.html)**
     ChatGPT 流程，构建自动化之路 **[ChatGPT自动化](https://chatflow.guoshuaifu.cn/zh-CN/)**
-    卡顿或无响应？可能是用户量太大， [添加微信获得独立账号 KEY 使用](/gptwx.jpg)
+    卡顿或无响应？可能是用户量太大， [添加微信获得独立账号 KEY 使用](/gptwx.jpg)，如果使用还满意，欢迎赞赏噢，我将送出我的3D打印手办于你
     欢迎来聊聊  [QQ群:160798639](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=YuWgTQrri80UNwaYa2GEkZ850c62__oH&authKey=zNaA7KWQjlW7pbJuDMc45l6i3Cgp6fXpgUcdkYEmItQlZBrHJhMPlS2TxAcmfcDX&noverify=0&group_code=160798639)`,
   },
   Auth: {
